@@ -12,6 +12,7 @@ int main()
 	boost::property_tree::ptree pt;
 	boost::property_tree::ini_parser::read_ini("d:\\tmp\\config.ini", pt);
 
+	cout << pt.get<string>("Provider.name") << endl;
 	cout << pt.get<string>("Provider.id") << endl;
 	cout << pt.get<string>("Provider.key") << endl;
 	cout << pt.get<string>("Output.type") << endl;
@@ -20,6 +21,6 @@ int main()
 	cin >> x;
 
 	return 0;
-//
+
 }
 
