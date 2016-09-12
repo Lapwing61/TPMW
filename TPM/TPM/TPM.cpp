@@ -10,7 +10,7 @@ int main()
 	char x;
 
 	boost::property_tree::ptree pt;
-	boost::property_tree::ini_parser::read_ini("d:\\tmp\\config.ini", pt);
+	boost::property_tree::ini_parser::read_ini("config.ini", pt);
 
 	cout << pt.get<string>("Provider.name") << endl;
 	cout << pt.get<string>("Provider.id") << endl;
