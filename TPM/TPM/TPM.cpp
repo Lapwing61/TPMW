@@ -2,16 +2,66 @@
 //
 
 #include "stdafx.h"
-using namespace std;
+using namespace std;	
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
 	((string*)userp)->append((char*)contents, size * nmemb);
-	return size * nmemb;
+	return size * nmemb;	
+}
+
+typedef boost::char_separator<char> sep_type;
+typedef boost::tokenizer<sep_type> tok_type;
+
+struct my_type
+{
+	int val;
+};
+
+ostream & operator << (ostream & strm, const my_type & t)
+{
+	strm << t.val;
+	return strm;
+}
+
+istream & operator >> (istream & strm, my_type & t)
+{
+	strm >> t.val;
+	return strm;
+}
+
+struct city
+{
+	string city_name;
+	string lat;
+	string lon;
+};	
+
+typedef vector<city> vec_type;
+
+template <typename InputIterator, typename ValueT>
+void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
+{
+	if (pos == end)
+	{
+		throw runtime_error("bad csv format");
+	}
+	else
+	    val = boost::lexical_cast<ValueT>(*pos);
+}
+
+
+template <typename InputIterator>
+void parseCsvLine(InputIterator it, InputIterator end, city & res)
+{
+	bindVariable(it, end, res.city_name); ++it;
+	bindVariable(it, end, res.lat); ++it;
+	bindVariable(it, end, res.lon); ++it;
 }
 
 int main()
 {
+	SetConsoleOutputCP(1251);
 
 	char x;
 
@@ -26,44 +76,78 @@ int main()
 
 	CURL *curl;
 	CURLcode res;
-
-	char errbuf[CURL_ERROR_SIZE];
-	string readBuffer;
-
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 
-	curl = curl_easy_init();
+	char errbuf[CURL_ERROR_SIZE];
 
-	if (curl) {
+	ifstream ifile("city.csv");
+	if (!ifile.is_open())
+	{
+		throw runtime_error("faild to open file city.csv");
+	}
 
-	 	string surl = "https://" + provider_name + "/forecast/" + secret_key + "/52.2786307867,104.2666916628?units=si";
-		char *url = new char[surl.length() + 1];
-		strcpy(url, surl.c_str());
-		errbuf[0] = 0;
+	string line;
+	sep_type sep(";");
+	vec_type vec;
 
-		curl_easy_setopt(curl, CURLOPT_URL, url);
-		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);	
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+	while (!ifile.eof())
+	{
+		getline(ifile, line);
+		tok_type tok(line, sep);
 
-		res = curl_easy_perform(curl);	
+		city tmp;
+		parseCsvLine(tok.begin(), tok.end(), tmp);
+		vec.push_back(tmp);
+	}
 
-		if (res != CURLE_OK) {
-			size_t len = strlen(errbuf);
-			fprintf(stderr, "\nlibcurl: (%d) ", res);
-			if (len)
-				fprintf(stderr, "%s%s", errbuf,
-				((errbuf[len - 1] != '\n') ? "\n" : ""));
-			else
-				fprintf(stderr, "%s\n", curl_easy_strerror(res));
-		}
-		else
-			cout << readBuffer << endl;
+	int i = 0;
 
-		curl_easy_cleanup(curl);
+	for (vec_type::const_iterator it = vec.begin(); it != vec.end(); ++it)
+	{
+			curl = curl_easy_init();
+
+   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
+
+//			cout <<
+//				"Number: " << i <<
+//				" City: " << it->city_name <<
+//				" Lat: " << it->lat <<
+//				" Lon: " << it->lat << endl;
+
+			if (curl) {
+
+	 			string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
+				char *url = new char[surl.length() + 1];
+				strcpy(url, surl.c_str());
+				errbuf[0] = 0;
+				string readBuffer;
+
+				curl_easy_setopt(curl, CURLOPT_URL, url);
+				curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);	
+				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+				curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+				res = curl_easy_perform(curl);	
+
+				if (res != CURLE_OK) {
+					size_t len = strlen(errbuf);
+					fprintf(stderr, "\nlibcurl: (%d) ", res);
+					if (len)
+						fprintf(stderr, "%s%s", errbuf,
+						((errbuf[len - 1] != '\n') ? "\n" : ""));
+					else
+						fprintf(stderr, "%s\n", curl_easy_strerror(res));
+				}
+				else
+					cout << readBuffer << endl;	
+
+				curl_easy_cleanup(curl);
+
+			} 
+			 i++;
 
 	}
-		
+
 	cin >> x;
 
 	curl_global_cleanup();
