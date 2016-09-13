@@ -35,7 +35,13 @@ struct city
 	string city_name;
 	string lat;
 	string lon;
-};	
+};
+
+struct weather_hourly
+{
+	string	time;
+	string	temperature;
+};
 
 typedef vector<city> vec_type;
 
@@ -106,13 +112,13 @@ int main()
 	{
 			curl = curl_easy_init();
 
-   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
+//   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
 
-//			cout <<
-//				"Number: " << i <<
-//				" City: " << it->city_name <<
-//				" Lat: " << it->lat <<
-//				" Lon: " << it->lat << endl;
+			cout <<
+				"Number: " << i <<
+				" City: " << it->city_name <<
+				" Lat: " << it->lat <<
+				" Lon: " << it->lat << endl;
 
 			if (curl) {
 
@@ -138,8 +144,39 @@ int main()
 					else
 						fprintf(stderr, "%s\n", curl_easy_strerror(res));
 				}
-				else
-					cout << readBuffer << endl;	
+//				else
+//					cout << readBuffer << endl;	
+
+				boost::property_tree::ptree pt2;
+				stringstream ss(readBuffer);
+				boost::property_tree::json_parser::read_json(ss, pt2);
+
+				weather_hourly current_weater;
+
+				current_weater.time = pt2.get<string>("currently.time");
+				current_weater.temperature = pt2.get<string>("currently.temperature");
+
+				cout <<
+					" Time: " << current_weater.time <<
+					" Temperature: " << current_weater.temperature << endl;
+
+				weather_hourly hourly_weather[50];
+				int j = 0;
+
+				BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
+				{
+
+					assert(v.first.empty()); 
+					hourly_weather[j].time = v.second.get<string>("time");
+					hourly_weather[j].temperature = v.second.get<string>("temperature");
+
+					cout <<
+						"      Time: " << hourly_weather[j].time <<
+						"      Temperature: " << hourly_weather[j].temperature << endl;
+
+					j++;
+
+				}
 
 				curl_easy_cleanup(curl);
 
