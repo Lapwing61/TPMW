@@ -168,7 +168,7 @@ int main()
 					" Icon: " << current_weather.icon <<
 					" Temperature: " << current_weather.temperature << endl;
 
-				weather_hourly hourly_weather[49];
+				weather_hourly hourly_weather[50];
 				int j = 0;
 
 				BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
@@ -194,7 +194,8 @@ int main()
 				curl_easy_cleanup(curl);
 
 			} 
-			i++;
+			 i++;
+
 	}
 
 	cin >> x;
