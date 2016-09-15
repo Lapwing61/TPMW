@@ -34,8 +34,11 @@ istream & operator >> (istream & strm, my_type & t)
 struct city
 {
 	string city_name;
+	string city_id;
 	string lat;
 	string lon;
+	string zoom1;
+	string zoom2;
 };
 
 struct weather_hourly
@@ -64,8 +67,11 @@ template <typename InputIterator>
 void parseCsvLine(InputIterator it, InputIterator end, city & res)
 {
 	bindVariable(it, end, res.city_name); ++it;
+	bindVariable(it, end, res.city_id); ++it;
 	bindVariable(it, end, res.lat); ++it;
 	bindVariable(it, end, res.lon); ++it;
+	bindVariable(it, end, res.zoom1); ++it;
+	bindVariable(it, end, res.zoom2); ++it;
 }
 
 int main()
@@ -78,10 +84,12 @@ int main()
 	bpt::ini_parser::read_ini("config.ini", pt);
 
 	string provider_name = pt.get<string>("Provider.name");
-//	cout << pt.get<string>("Provider.id") << endl;
+	string provider_id = pt.get<string>("Provider.id");
 	string secret_key = pt.get<string>("Provider.key");
-//	cout << pt.get<string>("Output.type") << endl;
-//	cout << pt.get<string>("Output.dir") << endl;
+	string output_type = pt.get<string>("Output.type");
+	string output_dir = pt.get<string>("Output.dir");
+	string output_file = pt.get<string>("Output.file");
+	string output = output_dir + "\\" + output_file;
 
 	CURL *curl;
 	CURLcode res;
@@ -97,7 +105,7 @@ int main()
 	replacelayers.add("layer", "Погода на карте");
 	trf.add_child("replacelayers", replacelayers);
 
-	ifstream ifile("city.csv");
+	ifstream ifile("city2.csv");
 	if (!ifile.is_open())
 	{
 		throw runtime_error("faild to open file city.csv");
@@ -211,13 +219,14 @@ int main()
 
 		string comments;
 		comments = it->city_name
-			+ "%0D%0AСейчас: <img src=\"[" + "icon_code1" + "]\" /> " + "+23" + "°"
-			+ "%0D%0AНочью: <img src=\"["  + "icon_code2" + "]\" /> " + "+12" + "°"
-			+ "%0D%0AЗавтра: <img src=\"[" + "icon_code3" + "]\" /> " + "+19" + "°";
+			+ "%0D%0AСейчас: %3Cimg src=%22[" + "icon_code1" + "]%22 /%3E " + "+23" + "°"
+			+ "%0D%0AНочью: %3Cimg src=%22["  + "icon_code2" + "]%22 /%3E " + "+12" + "°"
+			+ "%0D%0AЗавтра: %3Cimg src=%22[" + "icon_code3" + "]%22 /%3E " + "+19" + "°";
 //		comments = it->city_name
-//			+ "%0D%0AСейчас: <img src=\"[" + "icon_code1" + "]\" /> " "+23" + "°"
-//			+ "%0D%0AДнем: <img src=\"[" + "icon_code2" + "]\" /> " + "+12" + "°"
-//			+ "%0D%0AНочью: <img src=\"[" + "icon_code3" + "]\" /> " + "+19" + "°";
+//			+ "%0D%0AСейчас: %3Cimg src=%22[" + "icon_code1" + "]%22 /%3E " "+23" + "°"
+//			+ "%0D%0AДнем: %3Cimg src=%22[" + "icon_code2" + "]%22 /%3E " + "+12" + "°"
+
+//			+ "%0D%0AНочью: %3Cimg src=%22[" + "icon_code3" + "]%22 /%3E " + "+19" + "°";
 		sdata2.put("<xmlattr>.name", "#Comments");
 		sdata2.put_value(comments);
 		sdata1.add_child("sdata", sdata2);
@@ -233,8 +242,12 @@ int main()
 		sdata2.put_value("0");
 		sdata1.add_child("sdata", sdata2);
 
-		sdata2.put("<xmlattr>.name", "CreateTime");
-		sdata2.put_value("--ДС--");
+		time_t current_time = time(NULL);
+		float delphi_time = ((float)current_time / 86400) + 25569;
+
+
+			sdata2.put("<xmlattr>.name", "#CreateTime");
+		sdata2.put_value(to_string(delphi_time));
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#CreateUser");
@@ -242,7 +255,7 @@ int main()
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#ChangeTime");
-		sdata2.put_value("--ДИ--");
+		sdata2.put_value(to_string(delphi_time));
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#ChangeUser");
@@ -250,17 +263,20 @@ int main()
 		sdata1.add_child("sdata", sdata2);
 
 		obj.add_child("sdata", sdata1);
-		obj.put("<xmlattr>.id", "1");
+		obj.put("<xmlattr>.id", it->city_id);
 		obj.put("<xmlattr>.layer", "Погода на карте");
 		obj.put("<xmlattr>.x", it->lon);
 		obj.put("<xmlattr>.y", it->lat);
-		obj.put("<xmlattr>.zoom1", "1");
-		obj.put("<xmlattr>.zoom2", "1");
+		obj.put("<xmlattr>.zoom1", it->zoom1);
+		obj.put("<xmlattr>.zoom2", it->zoom2);
 		objs.add_child("obj", obj);
 	}
 	trf.add_child("objs", objs);
 	pt3.add_child("trf", trf);
-	bpt::write_xml("testXml.xml", pt3);
+
+	ofstream ofile(output);
+
+	bpt::write_xml(ofile, pt3);
 	curl_global_cleanup();
 
 	cin >> x;
