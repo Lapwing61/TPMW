@@ -41,6 +41,8 @@ struct city
 	string zoom2;
 };
 
+typedef vector<city> vec_type;
+
 struct weather_hourly
 {
 	string	utime;
@@ -49,7 +51,7 @@ struct weather_hourly
 	string	temperature;
 };
 
-typedef vector<city> vec_type;
+typedef vector<weather_hourly> vec_wh;
 
 template <typename InputIterator, typename ValueT>
 void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
@@ -105,7 +107,7 @@ int main()
 	replacelayers.add("layer", "Погода на карте");
 	trf.add_child("replacelayers", replacelayers);
 
-	ifstream ifile("city2.csv");
+	ifstream ifile("city.csv");
 	if (!ifile.is_open())
 	{
 		throw runtime_error("faild to open file city.csv");
@@ -143,13 +145,14 @@ int main()
 			" Lat: " << it->lat <<
 			" Lon: " << it->lon << endl;
 
+		string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
+		char *url = new char[surl.length() + 1];
+		strcpy(url, surl.c_str());
+		errbuf[0] = 0;
+		string readBuffer;
+
 		if (curl) {
 
-	 	    string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
-			char *url = new char[surl.length() + 1];
-			strcpy(url, surl.c_str());
-			errbuf[0] = 0;
-			string readBuffer;
 
 			curl_easy_setopt(curl, CURLOPT_URL, url);
 			curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);	
@@ -167,66 +170,58 @@ int main()
 				else
 					fprintf(stderr, "%s\n", curl_easy_strerror(res));
 			}
-//			else
-//				cout << readBuffer << endl;	
+		}
+		else return 1;
 
-			boost::property_tree::ptree pt2;
-			stringstream ss(readBuffer);
-			boost::property_tree::json_parser::read_json(ss, pt2);
+		curl_easy_cleanup(curl);
 
-			weather_hourly current_weather;
-			current_weather.utime = pt2.get<string>("currently.time");
-			current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + 8) % 24;
+		boost::property_tree::ptree pt2;
+		stringstream ss(readBuffer);
+		boost::property_tree::json_parser::read_json(ss, pt2);
 
-			current_weather.icon = pt2.get<string>("currently.icon");
-			current_weather.temperature = pt2.get<string>("currently.temperature");
+		weather_hourly current_weather;
+		current_weather.utime = pt2.get<string>("currently.time");
+		current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + 8) % 24;
+
+		current_weather.icon = pt2.get<string>("currently.icon");
+		current_weather.temperature = pt2.get<string>("currently.temperature");
 			
-//			cout <<
-//				" Time: " << current_weather.utime <<
-//				" Hour: " << current_weather.hour <<
-//				" Icon: " << current_weather.icon <<
-//				" Temperature: " << current_weather.temperature << endl;
+		vec_wh hourly_weather;
 
-			weather_hourly hourly_weather[49];
-			int j = 0;
+		BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
+		{
+			weather_hourly tmp2;
+			assert(v.first.empty()); 
+			tmp2.utime = v.second.get<string>("time");
+			tmp2.hour = (((stoi(tmp2.utime)) % 86400) / 3600 + 8) % 24;
+			tmp2.icon = v.second.get<string>("icon");
+			tmp2.temperature = v.second.get<string>("temperature");
+			hourly_weather.push_back(tmp2);
 
-			BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
-			{
+		}
 
-				assert(v.first.empty()); 
-				hourly_weather[j].utime = v.second.get<string>("time");
-				hourly_weather[j].hour = (((stoi(hourly_weather[j].utime)) % 86400) / 3600 + 8) % 24;
-				hourly_weather[j].icon = v.second.get<string>("icon");
-				hourly_weather[j].temperature = v.second.get<string>("temperature");
+		string current_w;
+		string first_w;
+		string second_w;
 
-//				cout <<
-//					"      Time: " << hourly_weather[j].utime <<
-//					"      Hour: " << hourly_weather[j].hour <<
-//					"      Icon: " << hourly_weather[j].icon <<
-//					"      Temperature: " << hourly_weather[j].temperature << endl;
+		current_w = "%0D%0AСейчас: %3Cimg src=%22[ICON1]%22 /%3E " + current_weather.temperature + "°";
 
-				j++;
-
+			if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
+				first_w  = "%0D%0AДнем: %3Cimg src=%22[ICON2]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+				second_w = "%0D%0AНочью: %3Cimg src=%22[ICON3]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+			}
+			else {
+				first_w  = "%0D%0AНочью: %3Cimg src=%22[ICON2]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+				second_w = "%0D%0AЗавтра: %3Cimg src=%22[ICON3]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 			}
 
-			curl_easy_cleanup(curl);
-
-		} 
 		i++;
 		sdata2.put("<xmlattr>.name", "#Name");
 		sdata2.put_value(it->city_name);
 		sdata1.add_child("sdata", sdata2);
 
 		string comments;
-		comments = it->city_name
-			+ "%0D%0AСейчас: %3Cimg src=%22[" + "icon_code1" + "]%22 /%3E " + "+23" + "°"
-			+ "%0D%0AНочью: %3Cimg src=%22["  + "icon_code2" + "]%22 /%3E " + "+12" + "°"
-			+ "%0D%0AЗавтра: %3Cimg src=%22[" + "icon_code3" + "]%22 /%3E " + "+19" + "°";
-//		comments = it->city_name
-//			+ "%0D%0AСейчас: %3Cimg src=%22[" + "icon_code1" + "]%22 /%3E " "+23" + "°"
-//			+ "%0D%0AДнем: %3Cimg src=%22[" + "icon_code2" + "]%22 /%3E " + "+12" + "°"
-
-//			+ "%0D%0AНочью: %3Cimg src=%22[" + "icon_code3" + "]%22 /%3E " + "+19" + "°";
+		comments = it->city_name + current_w + first_w + second_w;
 		sdata2.put("<xmlattr>.name", "#Comments");
 		sdata2.put_value(comments);
 		sdata1.add_child("sdata", sdata2);
