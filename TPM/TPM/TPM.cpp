@@ -80,8 +80,6 @@ int main()
 {
 	SetConsoleOutputCP(1251);
 
-	char x;
-
 	bpt::ptree pt;
 	bpt::ini_parser::read_ini("config.ini", pt);
 
@@ -96,8 +94,6 @@ int main()
 	CURL *curl;
 	CURLcode res;
 	curl_global_init(CURL_GLOBAL_DEFAULT);
-
-	char errbuf[CURL_ERROR_SIZE];
 
 	bpt::ptree pt3;
 	bpt::ptree trf;
@@ -139,36 +135,22 @@ int main()
 
 //   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
 
-		cout <<
-			"Number: " << i <<
-			" City: " << it->city_name <<
-			" Lat: " << it->lat <<
-			" Lon: " << it->lon << endl;
-
 		string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
 		char *url = new char[surl.length() + 1];
 		strcpy(url, surl.c_str());
-		errbuf[0] = 0;
 		string readBuffer;
 
 		if (curl) {
 
 
 			curl_easy_setopt(curl, CURLOPT_URL, url);
-			curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);	
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
 			res = curl_easy_perform(curl);	
 
 			if (res != CURLE_OK) {
-				size_t len = strlen(errbuf);
-				fprintf(stderr, "\nlibcurl: (%d) ", res);
-				if (len)
-					fprintf(stderr, "%s%s", errbuf,
-					((errbuf[len - 1] != '\n') ? "\n" : ""));
-				else
-					fprintf(stderr, "%s\n", curl_easy_strerror(res));
+				throw runtime_error("faild to connect");
 			}
 		}
 		else return 1;
@@ -273,8 +255,6 @@ int main()
 
 	bpt::write_xml(ofile, pt3);
 	curl_global_cleanup();
-
-	cin >> x;
 	return 0;
 
 }
