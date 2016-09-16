@@ -58,7 +58,7 @@ void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
 {
 	if (pos == end)
 	{
-		throw runtime_error("bad csv format");
+		throw runtime_error("city.csv: bad csv format");
 	}
 	else
 	    val = boost::lexical_cast<ValueT>(*pos);
