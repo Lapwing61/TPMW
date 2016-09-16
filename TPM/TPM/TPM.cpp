@@ -34,9 +34,14 @@ istream & operator >> (istream & strm, my_type & t)
 struct city
 {
 	string city_name;
+	string city_id;
 	string lat;
 	string lon;
+	string zoom1;
+	string zoom2;
 };
+
+typedef vector<city> vec_type;
 
 struct weather_hourly
 {
@@ -46,7 +51,7 @@ struct weather_hourly
 	string	temperature;
 };
 
-typedef vector<city> vec_type;
+typedef vector<weather_hourly> vec_wh;
 
 template <typename InputIterator, typename ValueT>
 void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
@@ -64,32 +69,31 @@ template <typename InputIterator>
 void parseCsvLine(InputIterator it, InputIterator end, city & res)
 {
 	bindVariable(it, end, res.city_name); ++it;
+	bindVariable(it, end, res.city_id); ++it;
 	bindVariable(it, end, res.lat); ++it;
 	bindVariable(it, end, res.lon); ++it;
+	bindVariable(it, end, res.zoom1); ++it;
+	bindVariable(it, end, res.zoom2); ++it;
 }
 
 int main()
 {
 	SetConsoleOutputCP(1251);
 
-	char x;
-
 	bpt::ptree pt;
 	bpt::ini_parser::read_ini("config.ini", pt);
 
 	string provider_name = pt.get<string>("Provider.name");
-	string secret_id = pt.get<string>("Provider.id");
+	string provider_id = pt.get<string>("Provider.id");
 	string secret_key = pt.get<string>("Provider.key");
 	string output_type = pt.get<string>("Output.type");
 	string output_dir = pt.get<string>("Output.dir");
-	string output_name = pt.get<string>("Output.oname");
-	string output = output_dir + "\\" + output_name + "." + output_type;
+	string output_file = pt.get<string>("Output.file");
+	string output = output_dir + "\\" + output_file;
 
 	CURL *curl;
 	CURLcode res;
 	curl_global_init(CURL_GLOBAL_DEFAULT);
-
-	char errbuf[CURL_ERROR_SIZE];
 
 	bpt::ptree pt3;
 	bpt::ptree trf;
@@ -131,95 +135,75 @@ int main()
 
 //   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
 
-		cout <<
-			"Number: " << i <<
-			" City: " << it->city_name <<
-			" Lat: " << it->lat <<
-			" Lon: " << it->lon << endl;
+		string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
+		char *url = new char[surl.length() + 1];
+		strcpy(url, surl.c_str());
+		string readBuffer;
 
 		if (curl) {
 
-	 	    string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
-			char *url = new char[surl.length() + 1];
-			strcpy(url, surl.c_str());
-			errbuf[0] = 0;
-			string readBuffer;
 
 			curl_easy_setopt(curl, CURLOPT_URL, url);
-			curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);	
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
 			res = curl_easy_perform(curl);	
 
 			if (res != CURLE_OK) {
-				size_t len = strlen(errbuf);
-				fprintf(stderr, "\nlibcurl: (%d) ", res);
-				if (len)
-					fprintf(stderr, "%s%s", errbuf,
-					((errbuf[len - 1] != '\n') ? "\n" : ""));
-				else
-					fprintf(stderr, "%s\n", curl_easy_strerror(res));
+				throw runtime_error("faild to connect");
 			}
-//			else
-//				cout << readBuffer << endl;	
+		}
+		else return 1;
 
-			boost::property_tree::ptree pt2;
-			stringstream ss(readBuffer);
-			boost::property_tree::json_parser::read_json(ss, pt2);
+		curl_easy_cleanup(curl);
 
-			weather_hourly current_weather;
-			current_weather.utime = pt2.get<string>("currently.time");
-			current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + 8) % 24;
+		boost::property_tree::ptree pt2;
+		stringstream ss(readBuffer);
+		boost::property_tree::json_parser::read_json(ss, pt2);
 
-			current_weather.icon = pt2.get<string>("currently.icon");
-			current_weather.temperature = pt2.get<string>("currently.temperature");
+		weather_hourly current_weather;
+		current_weather.utime = pt2.get<string>("currently.time");
+		current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + 8) % 24;
+
+		current_weather.icon = pt2.get<string>("currently.icon");
+		current_weather.temperature = pt2.get<string>("currently.temperature");
 			
-//			cout <<
-//				" Time: " << current_weather.utime <<
-//				" Hour: " << current_weather.hour <<
-//				" Icon: " << current_weather.icon <<
-//				" Temperature: " << current_weather.temperature << endl;
+		vec_wh hourly_weather;
 
-			weather_hourly hourly_weather[49];
-			int j = 0;
+		BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
+		{
+			weather_hourly tmp2;
+			assert(v.first.empty()); 
+			tmp2.utime = v.second.get<string>("time");
+			tmp2.hour = (((stoi(tmp2.utime)) % 86400) / 3600 + 8) % 24;
+			tmp2.icon = v.second.get<string>("icon");
+			tmp2.temperature = v.second.get<string>("temperature");
+			hourly_weather.push_back(tmp2);
 
-			BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
-			{
+		}
 
-				assert(v.first.empty()); 
-				hourly_weather[j].utime = v.second.get<string>("time");
-				hourly_weather[j].hour = (((stoi(hourly_weather[j].utime)) % 86400) / 3600 + 8) % 24;
-				hourly_weather[j].icon = v.second.get<string>("icon");
-				hourly_weather[j].temperature = v.second.get<string>("temperature");
+		string current_w;
+		string first_w;
+		string second_w;
 
-//				cout <<
-//					"      Time: " << hourly_weather[j].utime <<
-//					"      Hour: " << hourly_weather[j].hour <<
-//					"      Icon: " << hourly_weather[j].icon <<
-//					"      Temperature: " << hourly_weather[j].temperature << endl;
+		current_w = "%0D%0AСейчас: %3Cimg src=%22[ICON1]%22 /%3E " + current_weather.temperature + "°";
 
-				j++;
-
+			if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
+				first_w  = "%0D%0AДнем: %3Cimg src=%22[ICON2]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+				second_w = "%0D%0AНочью: %3Cimg src=%22[ICON3]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+			}
+			else {
+				first_w  = "%0D%0AНочью: %3Cimg src=%22[ICON2]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+				second_w = "%0D%0AЗавтра: %3Cimg src=%22[ICON3]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 			}
 
-			curl_easy_cleanup(curl);
-
-		} 
 		i++;
 		sdata2.put("<xmlattr>.name", "#Name");
 		sdata2.put_value(it->city_name);
 		sdata1.add_child("sdata", sdata2);
 
 		string comments;
-		comments = it->city_name
-			+ "%0D%0AСейчас: <img src=\"[" + "icon_code1" + "]\" /> " + "+23" + "°"
-			+ "%0D%0AНочью: <img src=\"["  + "icon_code2" + "]\" /> " + "+12" + "°"
-			+ "%0D%0AЗавтра: <img src=\"[" + "icon_code3" + "]\" /> " + "+19" + "°";
-//		comments = it->city_name
-//			+ "%0D%0AСейчас: <img src=\"[" + "icon_code1" + "]\" /> " "+23" + "°"
-//			+ "%0D%0AДнем: <img src=\"[" + "icon_code2" + "]\" /> " + "+12" + "°"
-//			+ "%0D%0AНочью: <img src=\"[" + "icon_code3" + "]\" /> " + "+19" + "°";
+		comments = it->city_name + current_w + first_w + second_w;
 		sdata2.put("<xmlattr>.name", "#Comments");
 		sdata2.put_value(comments);
 		sdata1.add_child("sdata", sdata2);
@@ -235,8 +219,12 @@ int main()
 		sdata2.put_value("0");
 		sdata1.add_child("sdata", sdata2);
 
-		sdata2.put("<xmlattr>.name", "CreateTime");
-		sdata2.put_value("--ДС--");
+		time_t current_time = time(NULL);
+		float delphi_time = ((float)current_time / 86400) + 25569;
+
+
+			sdata2.put("<xmlattr>.name", "#CreateTime");
+		sdata2.put_value(to_string(delphi_time));
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#CreateUser");
@@ -244,7 +232,7 @@ int main()
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#ChangeTime");
-		sdata2.put_value("--ДИ--");
+		sdata2.put_value(to_string(delphi_time));
 		sdata1.add_child("sdata", sdata2);
 
 		sdata2.put("<xmlattr>.name", "#ChangeUser");
@@ -252,20 +240,21 @@ int main()
 		sdata1.add_child("sdata", sdata2);
 
 		obj.add_child("sdata", sdata1);
-		obj.put("<xmlattr>.id", "1");
+		obj.put("<xmlattr>.id", it->city_id);
 		obj.put("<xmlattr>.layer", "Погода на карте");
 		obj.put("<xmlattr>.x", it->lon);
 		obj.put("<xmlattr>.y", it->lat);
-		obj.put("<xmlattr>.zoom1", "1");
-		obj.put("<xmlattr>.zoom2", "1");
+		obj.put("<xmlattr>.zoom1", it->zoom1);
+		obj.put("<xmlattr>.zoom2", it->zoom2);
 		objs.add_child("obj", obj);
 	}
 	trf.add_child("objs", objs);
 	pt3.add_child("trf", trf);
-	bpt::write_xml(output, pt3);
-	curl_global_cleanup();
 
-	cin >> x;
+	ofstream ofile(output);
+
+	bpt::write_xml(ofile, pt3);
+	curl_global_cleanup();
 	return 0;
 
 }
