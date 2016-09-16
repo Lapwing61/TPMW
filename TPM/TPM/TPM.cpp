@@ -107,8 +107,8 @@ int main()
 			ifstream ifile("city.csv");
 			if (!ifile.is_open())
 			{
-				throw runtime_error(" failed to open file city.csv");
-			}
+				throw runtime_error("city.csv: cannot open file"); 
+			}	
 
 			string line;
 			sep_type sep(";");
