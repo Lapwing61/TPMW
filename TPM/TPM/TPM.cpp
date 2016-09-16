@@ -78,10 +78,12 @@ int main()
 	bpt::ini_parser::read_ini("config.ini", pt);
 
 	string provider_name = pt.get<string>("Provider.name");
-//	cout << pt.get<string>("Provider.id") << endl;
+	string secret_id = pt.get<string>("Provider.id");
 	string secret_key = pt.get<string>("Provider.key");
-//	cout << pt.get<string>("Output.type") << endl;
-//	cout << pt.get<string>("Output.dir") << endl;
+	string output_type = pt.get<string>("Output.type");
+	string output_dir = pt.get<string>("Output.dir");
+	string output_name = pt.get<string>("Output.oname");
+	string output = output_dir + "\\" + output_name + "." + output_type;
 
 	CURL *curl;
 	CURLcode res;
@@ -260,7 +262,7 @@ int main()
 	}
 	trf.add_child("objs", objs);
 	pt3.add_child("trf", trf);
-	bpt::write_xml("testXml.xml", pt3);
+	bpt::write_xml(output, pt3);
 	curl_global_cleanup();
 
 	cin >> x;
