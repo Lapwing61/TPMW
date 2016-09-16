@@ -134,7 +134,7 @@ int main()
 
 				curl = curl_easy_init();
 
-		//   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
+//   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
 
 				string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
 				char *url = new char[surl.length() + 1];
@@ -142,7 +142,6 @@ int main()
 				string readBuffer;
 
 				if (curl) {
-
 
 					curl_easy_setopt(curl, CURLOPT_URL, url);
 					curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
