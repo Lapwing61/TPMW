@@ -14,6 +14,9 @@
 
 #include "targetver.h"
 
+#define _USE_MATH_DEFINES 
+
+#include <cmath>
 #include <stdio.h>
 #include <tchar.h>
 #include <iostream>
@@ -31,4 +34,5 @@
 #include <boost/tokenizer.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
+#include <boost/program_options.hpp>
 #include <curl/curl.h>
