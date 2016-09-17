@@ -383,8 +383,8 @@ int main(int ac, char* av[])
 				obj.add_child("signs", signs);
 
 				double EarthMapSize = 134217728;
-				double gx = stod(it->lon);
-				double gy = stod(it->lat);
+				double gx = stod(it->lat);
+				double gy = stod(it->lon);
 				double mx;
 				double my;
 				if (gx == 0) mx = 0; else {
