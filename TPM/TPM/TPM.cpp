@@ -174,28 +174,7 @@ int main(int ac, char* av[])
 					partly_cloudy_night = pt.get<string>("Icons.partly_cloudy_night");
 				}
 				else {
-					provider_name = "api.forecast.io";
-					if (!vm.count("key")) {
-						throw runtime_error("secret key needs");
-					}
-					else secret_key = vm["key"].as<string>();
-					if (!vm.count("output")) {
-						output = "testXml.xml";
-					}
-					else {
-						output = vm["output"].as<string>();
-						if (output.empty()) output = "testXml.xml";
-						}
-					clear_day = "_CLEAR__";
-					clear_night = "CLEARNT";
-					rain = "__RAIN__";	 
-					snow = "__SNOW__";	 
-					sleet = "_SLEET__";	 
-					wind = "__WIND__";	 
-					fog = "__FOG___";	 
-					cloudy = "_CLOUDY_"; 
-					partly_cloudy_day = "_PTCLDY_";
-					partly_cloudy_night = "_PTCLNT_";
+						throw runtime_error("configuration file is required");
 				}
 
 			CURL *curl;
