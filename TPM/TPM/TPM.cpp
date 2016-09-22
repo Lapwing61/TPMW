@@ -48,7 +48,8 @@ struct weather_hourly
 {
 	string	utime;
 	int		hour;
-	string  icon;
+	string  icon_src;
+	string  icon_crc;
 	string	temperature;
 };
 
@@ -115,16 +116,32 @@ int main(int ac, char* av[])
 			string output_dir;
 			string output_file;
 			string output;
-			string clear_day;
-			string clear_night;
-			string rain;
-			string snow;
-			string sleet;
-			string wind;
-			string fog;
-			string cloudy;
-			string partly_cloudy_day;
-			string partly_cloudy_night;
+
+			string src_clear_day;
+			string src_clear_night;
+			string src_rain;
+			string src_rain_2;
+			string src_snow;
+			string src_snow_2;
+			string src_sleet;
+			string src_wind;
+			string src_fog;
+			string src_cloudy;
+			string src_partly_cloudy_day;
+			string src_partly_cloudy_night;
+
+			string crc_clear_day;
+			string crc_clear_night;
+			string crc_rain;
+			string crc_rain_2;
+			string crc_snow;
+			string crc_snow_2;
+			string crc_sleet;
+			string crc_wind;
+			string crc_fog;
+			string crc_cloudy;
+			string crc_partly_cloudy_day;
+			string crc_partly_cloudy_night;
 
 
 			if (ac == 1) {
@@ -137,16 +154,32 @@ int main(int ac, char* av[])
 				output_dir = pt.get<string>("Output.dir");
 				output_file = pt.get<string>("Output.file");
 				output = output_dir + "\\" + output_file;
-				clear_day = pt.get<string>("Icons.clear_day");
-				clear_night = pt.get<string>("Icons.clear_night");
-				rain = pt.get<string>("Icons.rain");
-				snow = pt.get<string>("Icons.snow");
-				sleet = pt.get<string>("Icons.sleet");
-				wind = pt.get<string>("Icons.wind");
-				fog = pt.get<string>("Icons.fog");
-				cloudy = pt.get<string>("Icons.cloudy");
-				partly_cloudy_day = pt.get<string>("Icons.partly_cloudy_day");
-				partly_cloudy_night = pt.get<string>("Icons.partly_cloudy_night");
+
+				src_clear_day = pt.get<string>("Icons_src.clear_day");
+				src_clear_night = pt.get<string>("Icons_src.clear_night");
+				src_rain = pt.get<string>("Icons_src.rain");
+				src_rain_2 = pt.get<string>("Icons_src.rain_2");
+				src_snow = pt.get<string>("Icons_src.snow");
+				src_snow_2 = pt.get<string>("Icons_src.snow_2");
+				src_sleet = pt.get<string>("Icons_src.sleet");
+				src_wind = pt.get<string>("Icons_src.wind");
+				src_fog = pt.get<string>("Icons_src.fog");
+				src_cloudy = pt.get<string>("Icons_src.cloudy");
+				src_partly_cloudy_day = pt.get<string>("Icons_src.partly_cloudy_day");
+				src_partly_cloudy_night = pt.get<string>("Icons_src.partly_cloudy_night");
+
+				crc_clear_day = pt.get<string>("Icons_crc.clear_day");
+				crc_clear_night = pt.get<string>("Icons_crc.clear_night");
+				crc_rain = pt.get<string>("Icons_crc.rain");
+				crc_rain_2 = pt.get<string>("Icons_crc.rain_2");
+				crc_snow = pt.get<string>("Icons_crc.snow");
+				crc_snow_2 = pt.get<string>("Icons_crc.snow_2");
+				crc_sleet = pt.get<string>("Icons_crc.sleet");
+				crc_wind = pt.get<string>("Icons_crc.wind");
+				crc_fog = pt.get<string>("Icons_crc.fog");
+				crc_cloudy = pt.get<string>("Icons_crc.cloudy");
+				crc_partly_cloudy_day = pt.get<string>("Icons_crc.partly_cloudy_day");
+				crc_partly_cloudy_night = pt.get<string>("Icons_crc.partly_cloudy_night");
 
 			}
 			else 
@@ -162,16 +195,32 @@ int main(int ac, char* av[])
 					output_dir = pt.get<string>("Output.dir");
 					output_file = pt.get<string>("Output.file");
 					output = output_dir + "\\" + output_file;
-					clear_day = pt.get<string>("Icons.clear_day");
-					clear_night = pt.get<string>("Icons.clear_night");
-					rain = pt.get<string>("Icons.rain");
-					snow = pt.get<string>("Icons.snow");
-					sleet = pt.get<string>("Icons.sleet");
-					wind = pt.get<string>("Icons.wind");
-					fog = pt.get<string>("Icons.fog");
-					cloudy = pt.get<string>("Icons.cloudy");
-					partly_cloudy_day = pt.get<string>("Icons.partly_cloudy_day");
-					partly_cloudy_night = pt.get<string>("Icons.partly_cloudy_night");
+
+					src_clear_day = pt.get<string>("Icons_src.clear_day");
+					src_clear_night = pt.get<string>("Icons_src.clear_night");
+					src_rain = pt.get<string>("Icons_src.rain");
+					src_rain_2 = pt.get<string>("Icons_src.rain_2");
+					src_snow = pt.get<string>("Icons_src.snow");
+					src_snow_2 = pt.get<string>("Icons_src.snow_2");
+					src_sleet = pt.get<string>("Icons_src.sleet");
+					src_wind = pt.get<string>("Icons_src.wind");
+					src_fog = pt.get<string>("Icons_src.fog");
+					src_cloudy = pt.get<string>("Icons_src.cloudy");
+					src_partly_cloudy_day = pt.get<string>("Icons_src.partly_cloudy_day");
+					src_partly_cloudy_night = pt.get<string>("Icons_src.partly_cloudy_night");
+
+					crc_clear_day = pt.get<string>("Icons_crc.clear_day");
+					crc_clear_night = pt.get<string>("Icons_crc.clear_night");
+					crc_rain = pt.get<string>("Icons_crc.rain");
+					crc_rain_2 = pt.get<string>("Icons_crc.rain_2");
+					crc_snow = pt.get<string>("Icons_crc.snow");
+					crc_snow_2 = pt.get<string>("Icons_crc.snow_2");
+					crc_sleet = pt.get<string>("Icons_crc.sleet");
+					crc_wind = pt.get<string>("Icons_crc.wind");
+					crc_fog = pt.get<string>("Icons_crc.fog");
+					crc_cloudy = pt.get<string>("Icons_crc.cloudy");
+					crc_partly_cloudy_day = pt.get<string>("Icons_crc.partly_cloudy_day");
+					crc_partly_cloudy_night = pt.get<string>("Icons_crc.partly_cloudy_night");
 				}
 				else {
 						throw runtime_error("configuration file is required");
@@ -261,16 +310,60 @@ int main(int ac, char* av[])
 				current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + tz) % 24;
 
 				string icon = pt2.get<string>("currently.icon");
-				if (icon == "clear-day") current_weather.icon = clear_day;
-				if (icon == "clear-night") current_weather.icon = clear_night;
-				if (icon == "rain") current_weather.icon = rain;
-				if (icon == "snow") current_weather.icon = snow;
-				if (icon == "sleet") current_weather.icon = sleet;
-				if (icon == "wind") current_weather.icon = wind;
-				if (icon == "fog") current_weather.icon = fog;
-				if (icon == "cloudy") current_weather.icon = cloudy;
-				if (icon == "partly-cloudy-day") current_weather.icon = partly_cloudy_day;
-				if (icon == "partly-cloudy-night") current_weather.icon = partly_cloudy_night;
+				float precip = pt2.get<float>("currently.precipIntensity");
+
+				if (icon == "clear-day") { 
+					current_weather.icon_src = src_clear_day;
+					current_weather.icon_crc = crc_clear_day;
+				}
+				if (icon == "clear-night") {
+					current_weather.icon_src = src_clear_night;
+					current_weather.icon_crc = crc_clear_night;
+				}
+				if (icon == "rain") {
+					if ( precip >= 0.4) {
+						current_weather.icon_src = src_rain_2;
+						current_weather.icon_crc = crc_rain_2;
+					}
+					else {
+						current_weather.icon_src = src_rain;
+						current_weather.icon_crc = crc_rain;
+					}
+				}
+				if (icon == "snow") {
+					if ( precip >= 0.4) {
+						current_weather.icon_src = src_snow_2;
+						current_weather.icon_crc = crc_snow_2;
+					}
+					else {
+						current_weather.icon_src = src_snow;
+						current_weather.icon_crc = crc_snow;
+					}
+				}
+				if (icon == "sleet") {
+					current_weather.icon_src = src_sleet;
+					current_weather.icon_crc = crc_sleet;
+				}
+				if (icon == "wind") {
+					current_weather.icon_src = src_wind;
+					current_weather.icon_crc = crc_wind;
+				}
+				if (icon == "fog") {
+					current_weather.icon_src = src_fog;
+					current_weather.icon_crc = crc_fog;
+				}
+				if (icon == "cloudy") {
+					current_weather.icon_src = src_cloudy;
+					current_weather.icon_crc = crc_cloudy;
+				}
+				if (icon == "partly-cloudy-day") {
+					current_weather.icon_src = src_partly_cloudy_day;
+					current_weather.icon_crc = crc_partly_cloudy_day;
+				}
+				if (icon == "partly-cloudy-night") {
+					current_weather.icon_src = src_partly_cloudy_night;
+					current_weather.icon_crc = crc_partly_cloudy_night;
+				}
 
 				current_weather.temperature = to_string(lround(stoi(pt2.get<string>("currently.temperature"))));
 			
@@ -283,16 +376,61 @@ int main(int ac, char* av[])
 					tmp2.utime = v.second.get<string>("time");
 					tmp2.hour = (((stoi(tmp2.utime)) % 86400) / 3600 + 8) % 24;
 					string icon = v.second.get<string>("icon");
-					if (icon == "clear-day") tmp2.icon = clear_day;
-					if (icon == "clear-night") tmp2.icon = clear_night;
-					if (icon == "rain") tmp2.icon = rain;
-					if (icon == "snow") tmp2.icon = snow;
-					if (icon == "sleet") tmp2.icon = sleet;
-					if (icon == "wind") tmp2.icon = wind;
-					if (icon == "fog") tmp2.icon = fog;
-					if (icon == "cloudy") tmp2.icon = cloudy;
-					if (icon == "partly-cloudy-day") tmp2.icon = partly_cloudy_day;
-					if (icon == "partly-cloudy-night") tmp2.icon = partly_cloudy_night;
+					float precip = v.second.get<float>("precipIntensity");
+
+					if (icon == "clear-day") {
+						tmp2.icon_src = src_clear_day;
+						tmp2.icon_crc = crc_clear_day;
+					}
+					if (icon == "clear-night") {
+						tmp2.icon_src = src_clear_night;
+						tmp2.icon_crc = crc_clear_night;
+					}
+					if (icon == "rain") {
+						if (precip >= 0.4) {
+							tmp2.icon_src = src_rain_2;
+							tmp2.icon_crc = crc_rain_2;
+						}
+						else {
+							tmp2.icon_src = src_rain;
+							tmp2.icon_crc = crc_rain;
+						}
+					}
+					if (icon == "snow") {
+						if (precip >= 0.4) {
+							tmp2.icon_src = src_snow_2;
+							tmp2.icon_crc = crc_snow_2;
+						}
+						else {
+							tmp2.icon_src = src_snow;
+							tmp2.icon_crc = crc_snow;
+						}
+					}
+					if (icon == "sleet") {
+						tmp2.icon_src = src_sleet;
+						tmp2.icon_crc = crc_sleet;
+					}
+					if (icon == "wind") {
+						tmp2.icon_src = src_wind;
+						tmp2.icon_crc = crc_wind;
+					}
+					if (icon == "fog") {
+						tmp2.icon_src = src_fog;
+						tmp2.icon_crc = crc_fog;
+					}
+					if (icon == "cloudy") {
+						tmp2.icon_src = src_cloudy;
+						tmp2.icon_crc = crc_cloudy;
+					}
+					if (icon == "partly-cloudy-day") {
+						tmp2.icon_src = src_partly_cloudy_day;
+						tmp2.icon_crc = crc_partly_cloudy_day;
+					}
+					if (icon == "partly-cloudy-night") {
+						tmp2.icon_src = src_partly_cloudy_night;
+						tmp2.icon_crc = crc_partly_cloudy_night;
+					}
+
 					tmp2.temperature = to_string(lround(stoi(v.second.get<string>("temperature"))));
 					hourly_weather.push_back(tmp2);
 
@@ -301,16 +439,22 @@ int main(int ac, char* av[])
 				string current_w;
 				string first_w;
 				string second_w;
+				string tmp3;
+				string tmp4;
+				string tmp5;
 
-				current_w = "%0D%0AÑåé÷àñ: %3Cimg src=%22[" + current_weather.icon + "]%22 /%3E " + current_weather.temperature + "°";
+				tmp3 = boost::algorithm::replace_all_copy(current_weather.icon_src, "\\", "%5Ñ");	
+				current_w = "%0D%0AÑåé÷àñ: %3Cimg src=%22" + tmp3 + "%22 /%3E " + current_weather.temperature + "°";
+				tmp4 = boost::algorithm::replace_all_copy(hourly_weather[15 - (current_weather.hour % 12)].icon_src, "\\", "%5Ñ");
+				tmp5 = boost::algorithm::replace_all_copy(hourly_weather[27 - (current_weather.hour % 12)].icon_src, "\\", "%5Ñ");
 
 					if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
-						first_w  = "%0D%0AÄíåì: %3Cimg src=%22[" + hourly_weather[15 - (current_weather.hour % 12)].icon + "]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "%0D%0AÍî÷üþ: %3Cimg src=%22[" + hourly_weather[27 - (current_weather.hour % 12)].icon + "]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "%0D%0AÄíåì: %3Cimg src=%22" + tmp4 + "%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "%0D%0AÍî÷üþ: %3Cimg src=%22" + tmp5 + "%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 					else {
-						first_w  = "%0D%0AÍî÷üþ: %3Cimg src=%22[" + hourly_weather[15 - (current_weather.hour % 12)].icon + "]%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "%0D%0AÇàâòðà: %3Cimg src=%22[" + hourly_weather[27 - (current_weather.hour % 12)].icon + "]%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "%0D%0AÍî÷üþ: %3Cimg src=%22" + tmp4 + "%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "%0D%0AÇàâòðà: %3Cimg src=%22" + tmp5 + "%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 
 				i++;
@@ -354,7 +498,7 @@ int main(int ac, char* av[])
 				sdata1.add_child("sdata", sdata2);
 				obj.add_child("sdata", sdata1);
 
-				string libcrc = "%22[" + current_weather.icon + "]%22";
+				string libcrc = "%22[" + current_weather.icon_crc + "]%22";
  				sign.put("<xmlattr>.x", 0);
 				sign.put("<xmlattr>.y", 0);
 				sign.put("<xmlattr>.libcrc", libcrc);
