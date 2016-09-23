@@ -443,18 +443,30 @@ int main(int ac, char* av[])
 				string tmp4;
 				string tmp5;
 
-				tmp3 = boost::algorithm::replace_all_copy(current_weather.icon_src, "\\", "%5С");	
-				current_w = "%0D%0AСейчас: %3Cimg src=%22" + tmp3 + "%22 /%3E " + current_weather.temperature + "°";
-				tmp4 = boost::algorithm::replace_all_copy(hourly_weather[15 - (current_weather.hour % 12)].icon_src, "\\", "%5С");
-				tmp5 = boost::algorithm::replace_all_copy(hourly_weather[27 - (current_weather.hour % 12)].icon_src, "\\", "%5С");
+				if (stof(current_weather.temperature) > 0)
+					tmp3 = "+";
+				else
+					tmp3 = "";
+
+				if (stof(hourly_weather[15 - (current_weather.hour % 12)].temperature) > 0)
+					tmp4 = "+";
+				else
+					tmp4 = "";
+
+				if (stof(hourly_weather[27 - (current_weather.hour % 12)].temperature) > 0)
+					tmp5 = "+";
+				else
+					tmp5 = "";
+
+				current_w = "Сейчас: %3Cimg src=%22" + current_weather.icon_src + "%22 /%3E " + tmp3 + current_weather.temperature + "°";
 
 					if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
-						first_w  = "%0D%0AДнем: %3Cimg src=%22" + tmp4 + "%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "%0D%0AНочью: %3Cimg src=%22" + tmp5 + "%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "Днем: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "Ночью: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 					else {
-						first_w  = "%0D%0AНочью: %3Cimg src=%22" + tmp4 + "%22 /%3E " + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "%0D%0AЗавтра: %3Cimg src=%22" + tmp5 + "%22 /%3E " + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "Ночью: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "Завтра: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 
 				i++;
@@ -463,7 +475,7 @@ int main(int ac, char* av[])
 				sdata1.add_child("sdata", sdata2);
 
 				string comments;
-				comments = it->city_name + current_w + first_w + second_w;
+				comments = current_w + first_w + second_w;
 				sdata2.put("<xmlattr>.name", "#Comments");
 				sdata2.put_value(comments);
 				sdata1.add_child("sdata", sdata2);
@@ -498,7 +510,7 @@ int main(int ac, char* av[])
 				sdata1.add_child("sdata", sdata2);
 				obj.add_child("sdata", sdata1);
 
-				string libcrc = "%22[" + current_weather.icon_crc + "]%22";
+				string libcrc = current_weather.icon_crc;
  				sign.put("<xmlattr>.x", 0);
 				sign.put("<xmlattr>.y", 0);
 				sign.put("<xmlattr>.libcrc", libcrc);
@@ -533,7 +545,7 @@ int main(int ac, char* av[])
 
 			ofstream ofile(output);
 
-			auto settings = bpt::xml_writer_make_settings<string>('\t', 1, "windows-1252");
+			auto settings = bpt::xml_writer_make_settings<string>('\t', 1, "windows-1251");
 			bpt::write_xml(ofile, pt3, settings);
 			curl_global_cleanup();
 			return 0;
