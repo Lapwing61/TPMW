@@ -461,12 +461,12 @@ int main(int ac, char* av[])
 				current_w = "Ñåé÷àñ: %3Cimg src=%22" + current_weather.icon_src + "%22 /%3E " + tmp3 + current_weather.temperature + "°";
 
 					if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
-						first_w  = "Äíåì: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "Íî÷üş: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "%0D%0AÄíåì: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "%0D%0AÍî÷üş: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 					else {
-						first_w  = "Íî÷üş: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
-						second_w = "Çàâòğà: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
+						first_w  = "%0D%0AÍî÷üş: %3Cimg src=%22" + hourly_weather[15 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp4 + hourly_weather[15 - (current_weather.hour % 12)].temperature + "°";
+						second_w = "%0D%0AÇàâòğà: %3Cimg src=%22" + hourly_weather[27 - (current_weather.hour % 12)].icon_src + "%22 /%3E " + tmp5 + hourly_weather[27 - (current_weather.hour % 12)].temperature + "°";
 					}
 
 				i++;
@@ -481,7 +481,7 @@ int main(int ac, char* av[])
 				sdata1.add_child("sdata", sdata2);
 
 				string labeldisp;
-				labeldisp = it->city_name + "%0D%0A" + current_weather.temperature + "°";
+				labeldisp = it->city_name + "%0D%0A" + tmp3 + current_weather.temperature + "°";
 				sdata2.put("<xmlattr>.name", "#LabelDisp");
 				sdata2.put_value(labeldisp);
 				sdata1.add_child("sdata", sdata2);
