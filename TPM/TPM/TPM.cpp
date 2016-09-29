@@ -228,6 +228,7 @@ int main(int ac, char* av[])
 
 			CURL *curl;
 			CURLcode res;
+			char errbuf[CURL_ERROR_SIZE];
 			curl_global_init(CURL_GLOBAL_DEFAULT);
 
 			bpt::ptree pt3;
@@ -267,25 +268,39 @@ int main(int ac, char* av[])
 				bpt::ptree sdata2;
 				bpt::ptree signs;
 				bpt::ptree sign;
-
-				curl = curl_easy_init();
+				string err;
 
 //   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
 
 				string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
 				char *url = new char[surl.length() + 1];
 				strcpy(url, surl.c_str());
+				int attempt = 0;
+
 				string readBuffer;
+				errbuf[0] = 0;
+				curl = curl_easy_init();
 
 				if (curl) {
 
 					curl_easy_setopt(curl, CURLOPT_URL, url);
+					curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
 					curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
 					curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
 					res = curl_easy_perform(curl);	
 
 					if (res != CURLE_OK) {
+
+						size_t len = strlen(errbuf);
+						cerr << to_string(res) << endl;
+						if (len) {
+							string err(errbuf);
+							cerr << err << endl;
+						}
+						else
+							cerr << curl_easy_strerror(res) << endl;
+
 						throw runtime_error(" failed to connect");
 					}
 				}
@@ -552,7 +567,7 @@ int main(int ac, char* av[])
 		}
 		catch (runtime_error& e) {
 			cerr << e.what();
-				return 0;
+				return 1;
 		}
 	}
 

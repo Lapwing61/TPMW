@@ -18,10 +18,11 @@
 
 #include <cmath>
 #include <stdio.h>
-#include <tchar.h>
+//#include <tchar.h>
 #include <iostream>
 #include <string>
-#include <windows.h>
+#include <time.h>
+//#include <windows.h>
 #include <ostream>
 #include <fstream>
 #include <vector>
@@ -35,5 +36,4 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 #include <boost/program_options.hpp>
-//#include <boost/algorithm/string/replace.hpp>
 #include <curl/curl.h>
