@@ -76,6 +76,18 @@ void parseCsvLine(InputIterator it, InputIterator end, city & res)
 	bindVariable(it, end, res.lon); ++it;
 	bindVariable(it, end, res.zoom1); ++it;
 	bindVariable(it, end, res.zoom2); ++it;
+
+}
+
+string curr_time()
+{
+	stringstream tt;
+	string dd;
+	time_t t = time(nullptr);
+	tm tm = *localtime(&t);
+	tt << put_time(&tm, "%d/%m/%I %H:%M:%S");
+ 	dd = tt.str();
+	return dd;
 }
 
 int main(int ac, char* av[])
@@ -106,7 +118,7 @@ int main(int ac, char* av[])
 			if (vm.count("list")) {
 				list = vm["list"].as<string>();
 				if (list.empty()) list = "city.csv";
-			}
+			}	
 			else list = "city.csv";
 
 			string provider_name;
@@ -262,6 +274,7 @@ int main(int ac, char* av[])
 			int i = 0;
 
 			for (vec_type::const_iterator it = vec.begin(); it != vec.end(); ++it)
+			
 			{
 				bpt::ptree obj;
 				bpt::ptree sdata1;
@@ -276,41 +289,60 @@ int main(int ac, char* av[])
 				char *url = new char[surl.length() + 1];
 				strcpy(url, surl.c_str());
 				int attempt = 0;
-
 				string readBuffer;
-				errbuf[0] = 0;
-				curl = curl_easy_init();
 
-				if (curl) {
+				do {
 
-					curl_easy_setopt(curl, CURLOPT_URL, url);
-					curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
-					curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-					curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+					errbuf[0] = 0;
+					curl = curl_easy_init();
 
-					res = curl_easy_perform(curl);	
+					if (curl) {
 
-					if (res != CURLE_OK) {
+						cout << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
 
-						size_t len = strlen(errbuf);
-						cerr << to_string(res) << endl;
-						if (len) {
-							string err(errbuf);
-							cerr << err << endl;
+						curl_easy_setopt(curl, CURLOPT_URL, url);
+						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
+						curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+						curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+						res = curl_easy_perform(curl);	
+
+						if (res != CURLE_OK) {
+
+							size_t len = strlen(errbuf);
+							cout << to_string(res) << endl;
+							if (len) {
+								string err(errbuf);
+								cout << curr_time() << ": " <<err << endl;
+							}
+							else
+								cout << curr_time() << ": " << curl_easy_strerror(res) << endl;
+
+							attempt++;
+
 						}
-						else
-							cerr << curl_easy_strerror(res) << endl;
-
-						throw runtime_error(" failed to connect");
+						else {
+							break;
+						}
 					}
-				}
-				else return 1;
+					else return 1;
 
-				curl_easy_cleanup(curl);
+					curl_easy_cleanup(curl);
+
+				} while (attempt < 3);
+
+				if (attempt == 3) {
+					throw runtime_error("failed to connect");
+				}
 
 				boost::property_tree::ptree pt2;
 				stringstream ss(readBuffer);
 				boost::property_tree::json_parser::read_json(ss, pt2);
+
+				if (pt2.count("code")) {
+					cout << curr_time() << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
+					throw runtime_error("The request failed");
+ 				}
 
 				int tz = 0;
 				if (pt2.get<string>("timezone") == "Asia/Yekaterinburg")  tz = 5;
@@ -566,8 +598,9 @@ int main(int ac, char* av[])
 			return 0;
 		}
 		catch (runtime_error& e) {
-			cerr << e.what();
-				return 1;
+			cout << curr_time() << ": " << e.what() << endl;
+			system("pause");
+			return 1;
 		}
 	}
 
