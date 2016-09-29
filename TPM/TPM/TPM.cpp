@@ -88,8 +88,8 @@ int main(int ac, char* av[])
 				("help,h", "help message")
 				("config,c", bpo::value<std::string>(), "configuration file")
 				("list,l", bpo::value<std::string>(), "list of points")
-				("key,k", bpo::value<std::string>(), "secret key")
-				("output,o", bpo::value<std::string>(), "outup XML file")
+//				("key,k", bpo::value<std::string>(), "secret key")
+//				("output,o", bpo::value<std::string>(), "outup XML file")
 				;
 
 			bpo::variables_map vm;
