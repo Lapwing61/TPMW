@@ -79,21 +79,53 @@ void parseCsvLine(InputIterator it, InputIterator end, city & res)
 
 }
 
+string curr_date()
+{
+	stringstream tt;
+	string dd;
+	time_t t = time(nullptr);
+	tm tm = *localtime(&t);
+	tt << put_time(&tm, "%y%m%d");
+ 	dd = tt.str();
+	return dd;
+}
+
 string curr_time()
 {
 	stringstream tt;
 	string dd;
 	time_t t = time(nullptr);
 	tm tm = *localtime(&t);
-	tt << put_time(&tm, "%d/%m/%I %H:%M:%S");
- 	dd = tt.str();
+	tt << put_time(&tm, "%T");
+	dd = tt.str();
 	return dd;
 }
 
+boost::filesystem::ofstream flog;
+
 int main(int ac, char* av[])
 {
+	SetConsoleOutputCP(1251);
+
+	time_t seconds;
+	stringstream sec;
+
+	time(&seconds);
+	sec << seconds;
+	string spath = sec.str();
+	string lpath = "\\LOG\\" + curr_date();
+	string lfile = "\\TPM_" + spath + ".log";
+	boost::filesystem::path cpath = boost::filesystem::current_path();
+	boost::filesystem::path logpath;
+	logpath += cpath;
+	logpath += lpath;
+	if (!boost::filesystem::is_directory(logpath)) boost::filesystem::create_directories(logpath);
+	boost::filesystem::path logfile;
+	logfile = logpath;
+	logfile += lfile;
+	boost::filesystem::ofstream flog(logfile);
+
 	try{
-			SetConsoleOutputCP(1251);
 
 			bpo::options_description desc("Allowed options");
 			desc.add_options()
@@ -235,7 +267,8 @@ int main(int ac, char* av[])
 					crc_partly_cloudy_night = pt.get<string>("Icons_crc.partly_cloudy_night");
 				}
 				else {
-						throw runtime_error("configuration file is required");
+//					flog << curr_time() << "Конфигурационный файл необходим" << endl;
+					throw runtime_error("configuration file is required");
 				}
 
 			CURL *curl;
@@ -254,6 +287,7 @@ int main(int ac, char* av[])
 			ifstream ifile(list);
 			if (!ifile.is_open())
 			{
+//				flog << curr_time() << list << ": Не могу открыть файл" << endl;
 				throw runtime_error(list + ": cannot open file"); 
 			}	
 
@@ -298,7 +332,7 @@ int main(int ac, char* av[])
 
 					if (curl) {
 
-						cout << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
+						flog << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
 
 						curl_easy_setopt(curl, CURLOPT_URL, url);
 						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
@@ -310,13 +344,13 @@ int main(int ac, char* av[])
 						if (res != CURLE_OK) {
 
 							size_t len = strlen(errbuf);
-							cout << to_string(res) << endl;
+							flog << to_string(res) << endl;
 							if (len) {
 								string err(errbuf);
-								cout << curr_time() << ": " <<err << endl;
+								flog << curr_time() << ": " <<err << endl;
 							}
 							else
-								cout << curr_time() << ": " << curl_easy_strerror(res) << endl;
+								flog << curr_time() << ": " << curl_easy_strerror(res) << endl;
 
 							attempt++;
 
@@ -332,6 +366,7 @@ int main(int ac, char* av[])
 				} while (attempt < 3);
 
 				if (attempt == 3) {
+//					flog << curr_time() << "Ошибка соединения" << endl;
 					throw runtime_error("failed to connect");
 				}
 
@@ -340,7 +375,7 @@ int main(int ac, char* av[])
 				boost::property_tree::json_parser::read_json(ss, pt2);
 
 				if (pt2.count("code")) {
-					cout << curr_time() << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
+					flog << curr_time() << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
 					throw runtime_error("The request failed");
  				}
 
@@ -598,8 +633,8 @@ int main(int ac, char* av[])
 			return 0;
 		}
 		catch (runtime_error& e) {
-			cout << curr_time() << ": " << e.what() << endl;
-			system("pause");
+			flog << curr_time() << ": " << e.what() << endl;
+//			system("pause");
 			return 1;
 		}
 	}
