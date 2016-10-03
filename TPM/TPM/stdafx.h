@@ -37,4 +37,5 @@
 #include <boost/foreach.hpp>
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/optional.hpp>
 #include <curl/curl.h>

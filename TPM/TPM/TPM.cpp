@@ -60,7 +60,7 @@ void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
 {
 	if (pos == end)
 	{
-		throw runtime_error("city.csv: bad csv format");
+		throw runtime_error("city.csv: bad csv format, aborting");
 	}
 	else
 	    val = boost::lexical_cast<ValueT>(*pos);
@@ -127,13 +127,13 @@ int main(int ac, char* av[])
 
 	try{
 
-			bpo::options_description desc("Allowed options");
+		flog << curr_time() << ": Starting" << endl;
+
+		bpo::options_description desc("Allowed options");
 			desc.add_options()
 				("help,h", "help message")
 				("config,c", bpo::value<std::string>(), "configuration file")
 				("list,l", bpo::value<std::string>(), "list of points")
-//				("key,k", bpo::value<std::string>(), "secret key")
-//				("output,o", bpo::value<std::string>(), "outup XML file")
 				;
 
 			bpo::variables_map vm;
@@ -158,6 +158,9 @@ int main(int ac, char* av[])
 			string secret_key;
 			string output_type;
 			string output_dir;
+			string output_site;
+			string output_login;
+			string output_password;
 			string output_file;
 			string output;
 
@@ -187,17 +190,37 @@ int main(int ac, char* av[])
 			string crc_partly_cloudy_day;
 			string crc_partly_cloudy_night;
 
+			int out = 0;
 
 			if (ac == 1) {
 				bpt::ptree pt;
 				bpt::ini_parser::read_ini("config.ini", pt);
 				provider_name = pt.get<string>("Provider.name");
-//				provider_id = pt.get<string>("Provider.id");
+				boost::optional<bool> v = pt.get_optional<bool>("Provider.id");
+				if (v)
+					provider_id = pt.get<string>("Provider.id");
+				else
+					provider_id = "not found";
 				secret_key = pt.get<string>("Provider.key");
 //				output_type = pt.get<string>("Output.type");
-				output_dir = pt.get<string>("Output.dir");
-				output_file = pt.get<string>("Output.file");
-				output = output_dir + "\\" + output_file;
+				if (pt.count("Output.file"))
+					output_file = pt.get<string>("Output.file");
+				else
+					output_file = "Weather.xmltrf";
+				if (pt.count("Output.dir")) {
+					output_dir = pt.get<string>("Output.dir");
+					output = output_dir + "\\" + output_file;
+					out = 1;
+				}
+				else {
+					if (pt.count("Output.site")) {
+						output_site = pt.get<string>("Output.site");
+						output_login = pt.get<string>("Output.login");
+						output_password = pt.get<string>("Output.password");
+						output = output_site + "/" + output_file;
+						out = 2;
+				    }
+				}
 
 				src_clear_day = pt.get<string>("Icons_src.clear_day");
 				src_clear_night = pt.get<string>("Icons_src.clear_night");
@@ -236,9 +259,24 @@ int main(int ac, char* av[])
 //					provider_id = pt.get<string>("Provider.id");
 					secret_key = pt.get<string>("Provider.key");
 //					output_type = pt.get<string>("Output.type");
-					output_dir = pt.get<string>("Output.dir");
-					output_file = pt.get<string>("Output.file");
-					output = output_dir + "\\" + output_file;
+					if (pt.count("Output.file"))
+						output_file = pt.get<string>("Output.file");
+					else
+						output_file = "Weather.xmltrf";
+					if (pt.count("Output.dir")) {
+						output_dir = pt.get<string>("Output.dir");
+						output = output_dir + "\\" + output_file;
+						out = 1;
+					}
+					else {
+						if (pt.count("Output.site")) {
+							output_site = pt.get<string>("Output.site");
+							output_login = pt.get<string>("Output.login");
+							output_password = pt.get<string>("Output.password");
+							output = output_site + "/" + output_file;
+							out = 2;
+						}
+					}
 
 					src_clear_day = pt.get<string>("Icons_src.clear_day");
 					src_clear_night = pt.get<string>("Icons_src.clear_night");
@@ -307,6 +345,7 @@ int main(int ac, char* av[])
 
 			int i = 0;
 
+
 			for (vec_type::const_iterator it = vec.begin(); it != vec.end(); ++it)
 			
 			{
@@ -332,7 +371,7 @@ int main(int ac, char* av[])
 
 					if (curl) {
 
-						flog << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
+//						flog << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
 
 						curl_easy_setopt(curl, CURLOPT_URL, url);
 						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
@@ -347,10 +386,10 @@ int main(int ac, char* av[])
 							flog << to_string(res) << endl;
 							if (len) {
 								string err(errbuf);
-								flog << curr_time() << ": " <<err << endl;
+								flog << curr_time() << ": (" << it->city_name << ") " << err << endl;
 							}
 							else
-								flog << curr_time() << ": " << curl_easy_strerror(res) << endl;
+								flog << curr_time() << ": (" << it->city_name << ") " << curl_easy_strerror(res) << endl;
 
 							attempt++;
 
@@ -359,7 +398,10 @@ int main(int ac, char* av[])
 							break;
 						}
 					}
-					else return 1;
+					else {
+						flog << curr_time() << ": Unknown error, aborting" << endl;
+						return 1;
+					}
 
 					curl_easy_cleanup(curl);
 
@@ -367,7 +409,7 @@ int main(int ac, char* av[])
 
 				if (attempt == 3) {
 //					flog << curr_time() << "Ошибка соединения" << endl;
-					throw runtime_error("failed to connect");
+					throw runtime_error("failed to connect, aborting");
 				}
 
 				boost::property_tree::ptree pt2;
@@ -375,8 +417,8 @@ int main(int ac, char* av[])
 				boost::property_tree::json_parser::read_json(ss, pt2);
 
 				if (pt2.count("code")) {
-					flog << curr_time() << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
-					throw runtime_error("The request failed");
+					flog << curr_time() << ": (" << it->city_name << ") " << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
+					throw runtime_error("The request failed, aborting");
  				}
 
 				int tz = 0;
@@ -626,10 +668,23 @@ int main(int ac, char* av[])
 			pt3.add_child("trf", trf);
 
 			ofstream ofile(output);
-
 			auto settings = bpt::xml_writer_make_settings<string>('\t', 1, "windows-1251");
-			bpt::write_xml(ofile, pt3, settings);
+			switch (out)
+			{
+				case 1:
+					bpt::write_xml(ofile, pt3, settings);
+					break;
+				case 2:
+
+//					break;
+				default:
+					bpt::write_xml(cout, pt3, settings);
+					break;
+			}
+
+			
 			curl_global_cleanup();
+			flog << curr_time() << ": Done" << endl;
 			return 0;
 		}
 		catch (runtime_error& e) {
