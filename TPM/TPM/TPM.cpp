@@ -103,6 +103,33 @@ string curr_time()
 
 boost::filesystem::ofstream flog;
 
+string getkey(bpt::ptree tree, string key)
+{
+	string okey;
+	if (boost::optional<std::string> str = tree.get_optional<std::string>(key)) {
+		okey = str.get();
+	}
+	else {
+		throw runtime_error("config.ini: [" + key + "] not found, aborting");
+	}
+	if (okey == "") {
+		throw runtime_error("config.ini: [" + key + "] empty, aborting");
+	}
+	return okey;
+}
+
+string getkeyd(bpt::ptree tree, string key, string def)
+{
+	string okey;
+	if (boost::optional<std::string> str = tree.get_optional<std::string>(key)) {
+		okey = str.get();
+	}
+	else {
+		okey = def;
+	}
+	return okey;
+}
+
 int main(int ac, char* av[])
 {
 	SetConsoleOutputCP(1251);
@@ -162,7 +189,7 @@ int main(int ac, char* av[])
 			string output_login;
 			string output_password;
 			string output_file;
-			string output;
+			string output = "";
 
 			string src_clear_day;
 			string src_clear_night;
@@ -195,58 +222,52 @@ int main(int ac, char* av[])
 			if (ac == 1) {
 				bpt::ptree pt;
 				bpt::ini_parser::read_ini("config.ini", pt);
-				provider_name = pt.get<string>("Provider.name");
-				boost::optional<bool> v = pt.get_optional<bool>("Provider.id");
-				if (v)
-					provider_id = pt.get<string>("Provider.id");
-				else
-					provider_id = "not found";
-				secret_key = pt.get<string>("Provider.key");
-//				output_type = pt.get<string>("Output.type");
-				if (pt.count("Output.file"))
-					output_file = pt.get<string>("Output.file");
-				else
-					output_file = "Weather.xmltrf";
-				if (pt.count("Output.dir")) {
-					output_dir = pt.get<string>("Output.dir");
+				provider_name = getkey(pt, "Provider.name");
+//				provider_id = getkey(pt, "Provider.id");
+				secret_key = getkey(pt, "Provider.key");
+
+//				output_type = getkey(pt, "Output.type");
+				output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
+				output_dir = getkeyd(pt,"Output.dir","");
+				if (output_dir != "") {
 					output = output_dir + "\\" + output_file;
 					out = 1;
 				}
 				else {
-					if (pt.count("Output.site")) {
-						output_site = pt.get<string>("Output.site");
-						output_login = pt.get<string>("Output.login");
-						output_password = pt.get<string>("Output.password");
+					output_site = getkeyd(pt,"Output.site","");
+					if (output_site != "") {
+						output_login = getkey(pt, "Output.login");
+						output_password = getkey(pt, "Output.password");
 						output = output_site + "/" + output_file;
 						out = 2;
-				    }
+					}
 				}
 
-				src_clear_day = pt.get<string>("Icons_src.clear_day");
-				src_clear_night = pt.get<string>("Icons_src.clear_night");
-				src_rain = pt.get<string>("Icons_src.rain");
-				src_rain_2 = pt.get<string>("Icons_src.rain_2");
-				src_snow = pt.get<string>("Icons_src.snow");
-				src_snow_2 = pt.get<string>("Icons_src.snow_2");
-				src_sleet = pt.get<string>("Icons_src.sleet");
-				src_wind = pt.get<string>("Icons_src.wind");
-				src_fog = pt.get<string>("Icons_src.fog");
-				src_cloudy = pt.get<string>("Icons_src.cloudy");
-				src_partly_cloudy_day = pt.get<string>("Icons_src.partly_cloudy_day");
-				src_partly_cloudy_night = pt.get<string>("Icons_src.partly_cloudy_night");
+				src_clear_day = getkey(pt, "Icons_src.clear_day");
+				src_clear_night = getkey(pt, "Icons_src.clear_night");
+				src_rain = getkey(pt, "Icons_src.rain");
+				src_rain_2 = getkey(pt, "Icons_src.rain_2");
+				src_snow = getkey(pt, "Icons_src.snow");
+				src_snow_2 = getkey(pt, "Icons_src.snow_2");
+				src_sleet = getkey(pt, "Icons_src.sleet");
+				src_wind = getkey(pt, "Icons_src.wind");
+				src_fog = getkey(pt, "Icons_src.fog");
+				src_cloudy = getkey(pt, "Icons_src.cloudy");
+				src_partly_cloudy_day = getkey(pt, "Icons_src.partly_cloudy_day");
+				src_partly_cloudy_night = getkey(pt, "Icons_src.partly_cloudy_night");
 
-				crc_clear_day = pt.get<string>("Icons_crc.clear_day");
-				crc_clear_night = pt.get<string>("Icons_crc.clear_night");
-				crc_rain = pt.get<string>("Icons_crc.rain");
-				crc_rain_2 = pt.get<string>("Icons_crc.rain_2");
-				crc_snow = pt.get<string>("Icons_crc.snow");
-				crc_snow_2 = pt.get<string>("Icons_crc.snow_2");
-				crc_sleet = pt.get<string>("Icons_crc.sleet");
-				crc_wind = pt.get<string>("Icons_crc.wind");
-				crc_fog = pt.get<string>("Icons_crc.fog");
-				crc_cloudy = pt.get<string>("Icons_crc.cloudy");
-				crc_partly_cloudy_day = pt.get<string>("Icons_crc.partly_cloudy_day");
-				crc_partly_cloudy_night = pt.get<string>("Icons_crc.partly_cloudy_night");
+				crc_clear_day = getkey(pt, "Icons_crc.clear_day");
+				crc_clear_night = getkey(pt, "Icons_crc.clear_night");
+				crc_rain = getkey(pt, "Icons_crc.rain");
+				crc_rain_2 = getkey(pt, "Icons_crc.rain_2");
+				crc_snow = getkey(pt, "Icons_crc.snow");
+				crc_snow_2 = getkey(pt, "Icons_crc.snow_2");
+				crc_sleet = getkey(pt, "Icons_crc.sleet");
+				crc_wind = getkey(pt, "Icons_crc.wind");
+				crc_fog = getkey(pt, "Icons_crc.fog");
+				crc_cloudy = getkey(pt, "Icons_crc.cloudy");
+				crc_partly_cloudy_day = getkey(pt, "Icons_crc.partly_cloudy_day");
+				crc_partly_cloudy_night = getkey(pt, "Icons_crc.partly_cloudy_night");
 
 			}
 			else 
@@ -254,59 +275,57 @@ int main(int ac, char* av[])
 					string config = vm["config"].as<string>();
 					if (config.empty()) config = "config.ini";
 					bpt::ptree pt;
-					bpt::ini_parser::read_ini((string)config, pt);
-					provider_name = pt.get<string>("Provider.name");
-//					provider_id = pt.get<string>("Provider.id");
-					secret_key = pt.get<string>("Provider.key");
-//					output_type = pt.get<string>("Output.type");
-					if (pt.count("Output.file"))
-						output_file = pt.get<string>("Output.file");
-					else
-						output_file = "Weather.xmltrf";
-					if (pt.count("Output.dir")) {
-						output_dir = pt.get<string>("Output.dir");
+					bpt::ini_parser::read_ini("config.ini", pt);
+					provider_name = getkey(pt, "Provider.name");
+//					provider_id = getkey(pt, "Provider.id");
+					secret_key = getkey(pt, "Provider.key");
+
+//					output_type = getkey(pt, "Output.type");
+					output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
+					output_dir = getkeyd(pt, "Output.dir", "");
+					if (output_dir != "") {
 						output = output_dir + "\\" + output_file;
 						out = 1;
 					}
 					else {
-						if (pt.count("Output.site")) {
-							output_site = pt.get<string>("Output.site");
-							output_login = pt.get<string>("Output.login");
-							output_password = pt.get<string>("Output.password");
+						output_site = getkeyd(pt, "Output.site", "");
+						if (output_site != "") {
+							output_login = getkey(pt, "Output.login");
+							output_password = getkey(pt, "Output.password");
 							output = output_site + "/" + output_file;
 							out = 2;
 						}
 					}
 
-					src_clear_day = pt.get<string>("Icons_src.clear_day");
-					src_clear_night = pt.get<string>("Icons_src.clear_night");
-					src_rain = pt.get<string>("Icons_src.rain");
-					src_rain_2 = pt.get<string>("Icons_src.rain_2");
-					src_snow = pt.get<string>("Icons_src.snow");
-					src_snow_2 = pt.get<string>("Icons_src.snow_2");
-					src_sleet = pt.get<string>("Icons_src.sleet");
-					src_wind = pt.get<string>("Icons_src.wind");
-					src_fog = pt.get<string>("Icons_src.fog");
-					src_cloudy = pt.get<string>("Icons_src.cloudy");
-					src_partly_cloudy_day = pt.get<string>("Icons_src.partly_cloudy_day");
-					src_partly_cloudy_night = pt.get<string>("Icons_src.partly_cloudy_night");
+					src_clear_day = getkey(pt, "Icons_src.clear_day");
+					src_clear_night = getkey(pt, "Icons_src.clear_night");
+					src_rain = getkey(pt, "Icons_src.rain");
+					src_rain_2 = getkey(pt, "Icons_src.rain_2");
+					src_snow = getkey(pt, "Icons_src.snow");
+					src_snow_2 = getkey(pt, "Icons_src.snow_2");
+					src_sleet = getkey(pt, "Icons_src.sleet");
+					src_wind = getkey(pt, "Icons_src.wind");
+					src_fog = getkey(pt, "Icons_src.fog");
+					src_cloudy = getkey(pt, "Icons_src.cloudy");
+					src_partly_cloudy_day = getkey(pt, "Icons_src.partly_cloudy_day");
+					src_partly_cloudy_night = getkey(pt, "Icons_src.partly_cloudy_night");
 
-					crc_clear_day = pt.get<string>("Icons_crc.clear_day");
-					crc_clear_night = pt.get<string>("Icons_crc.clear_night");
-					crc_rain = pt.get<string>("Icons_crc.rain");
-					crc_rain_2 = pt.get<string>("Icons_crc.rain_2");
-					crc_snow = pt.get<string>("Icons_crc.snow");
-					crc_snow_2 = pt.get<string>("Icons_crc.snow_2");
-					crc_sleet = pt.get<string>("Icons_crc.sleet");
-					crc_wind = pt.get<string>("Icons_crc.wind");
-					crc_fog = pt.get<string>("Icons_crc.fog");
-					crc_cloudy = pt.get<string>("Icons_crc.cloudy");
-					crc_partly_cloudy_day = pt.get<string>("Icons_crc.partly_cloudy_day");
-					crc_partly_cloudy_night = pt.get<string>("Icons_crc.partly_cloudy_night");
+					crc_clear_day = getkey(pt, "Icons_crc.clear_day");
+					crc_clear_night = getkey(pt, "Icons_crc.clear_night");
+					crc_rain = getkey(pt, "Icons_crc.rain");
+					crc_rain_2 = getkey(pt, "Icons_crc.rain_2");
+					crc_snow = getkey(pt, "Icons_crc.snow");
+					crc_snow_2 = getkey(pt, "Icons_crc.snow_2");
+					crc_sleet = getkey(pt, "Icons_crc.sleet");
+					crc_wind = getkey(pt, "Icons_crc.wind");
+					crc_fog = getkey(pt, "Icons_crc.fog");
+					crc_cloudy = getkey(pt, "Icons_crc.cloudy");
+					crc_partly_cloudy_day = getkey(pt, "Icons_crc.partly_cloudy_day");
+					crc_partly_cloudy_night = getkey(pt, "Icons_crc.partly_cloudy_night");
 				}
 				else {
 //					flog << curr_time() << "Конфигурационный файл необходим" << endl;
-					throw runtime_error("configuration file is required");
+					throw runtime_error("configuration file is required, aborting");
 				}
 
 			CURL *curl;
@@ -326,7 +345,7 @@ int main(int ac, char* av[])
 			if (!ifile.is_open())
 			{
 //				flog << curr_time() << list << ": Не могу открыть файл" << endl;
-				throw runtime_error(list + ": cannot open file"); 
+				throw runtime_error(list + ": cannot open file, aborting"); 
 			}	
 
 			string line;
