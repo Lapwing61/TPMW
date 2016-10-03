@@ -226,7 +226,7 @@ int main(int ac, char* av[])
 //				provider_id = getkey(pt, "Provider.id");
 				secret_key = getkey(pt, "Provider.key");
 
-//				output_type = getkey(pt, "Output.type");
+//				output_type = getkeyd(pt, "Output.type","XML");
 				output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
 				output_dir = getkeyd(pt,"Output.dir","");
 				if (output_dir != "") {
@@ -280,7 +280,7 @@ int main(int ac, char* av[])
 //					provider_id = getkey(pt, "Provider.id");
 					secret_key = getkey(pt, "Provider.key");
 
-//					output_type = getkey(pt, "Output.type");
+//					output_type = getkeyd(pt, "Output.type","XML");
 					output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
 					output_dir = getkeyd(pt, "Output.dir", "");
 					if (output_dir != "") {
