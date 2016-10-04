@@ -729,7 +729,7 @@ int main(int ac, char* av[])
 					curl = curl_easy_init();
 					errbuf[0] = 0;
 						if (curl) {
-						curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+//						curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
 						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
 						curl_easy_setopt(curl, CURLOPT_URL, ourl);
