@@ -26,6 +26,7 @@
 #include <ostream>
 #include <fstream>
 #include <vector>
+#include <sys/stat.h>
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
 #include <boost/property_tree/ptree.hpp>

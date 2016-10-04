@@ -6,10 +6,16 @@ using namespace std;
 namespace bpt = boost::property_tree;
 namespace bpo = boost::program_options;
 
-static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
+static size_t WriteCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-	((string*)userp)->append((char*)contents, size * nmemb);
+	((string*)stream)->append((char*)ptr, size * nmemb);
 	return size * nmemb;	
+}
+
+static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+	size_t retcode = fread(ptr, size, nmemb, (FILE*)stream);
+	return retcode;
 }
 
 typedef boost::char_separator<char> sep_type;
@@ -688,14 +694,29 @@ int main(int ac, char* av[])
 
 			ofstream ofile(output);
 			auto settings = bpt::xml_writer_make_settings<string>('\t', 1, "windows-1251");
+			stringstream outs;
 			switch (out)
 			{
 				case 1:
 					bpt::write_xml(ofile, pt3, settings);
 					break;
 				case 2:
-
-//					break;
+					bpt::write_xml(outs, pt3, settings);
+					curl = curl_easy_init();
+					outs.seekg(0, ios::end);
+				    double o_size = outs.tellg();	
+					if (curl) {
+						curl_easy_setopt(curl, CURLOPT_URL, output);
+						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
+						curl_easy_setopt(curl, CURLOPT_READDATA, outs);
+						curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, (curl_off_t)o_size);
+						curl_easy_setopt(curl, CURLOPT_HTTPAUTH, (long)CURLAUTH_ANY);
+						curl_easy_setopt(curl, CURLOPT_USERNAME, output_login);
+						curl_easy_setopt(curl, CURLOPT_PASSWORD, output_password);
+						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+						res = curl_easy_perform(curl);
+						curl_easy_cleanup(curl);
+					break;
 				default:
 					bpt::write_xml(cout, pt3, settings);
 					break;
