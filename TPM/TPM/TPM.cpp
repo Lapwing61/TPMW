@@ -702,9 +702,9 @@ int main(int ac, char* av[])
 					break;
 				case 2:
 					bpt::write_xml(outs, pt3, settings);
-					curl = curl_easy_init();
 					outs.seekg(0, ios::end);
 				    double o_size = outs.tellg();	
+					curl = curl_easy_init();
 					if (curl) {
 						curl_easy_setopt(curl, CURLOPT_URL, output);
 						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
@@ -715,7 +715,8 @@ int main(int ac, char* av[])
 						curl_easy_setopt(curl, CURLOPT_PASSWORD, output_password);
 						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
 						res = curl_easy_perform(curl);
-						curl_easy_cleanup(curl);
+					}
+					curl_easy_cleanup(curl);
 					break;
 				default:
 					bpt::write_xml(cout, pt3, settings);
