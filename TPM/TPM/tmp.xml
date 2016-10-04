@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<trf>
+	<replacelayers>
+		<layer>Погода на карте</layer>
+	</replacelayers>
+	<objs>
+		<obj id="011A2B970050B1B3" layer="Погода на карте" x="33025029.446603" y="41577072.169622" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Айхал</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -1°</sdata>
+				<sdata name="#LabelDisp">Айхал%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42647.500613</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42647.500613</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+	</objs>
+</trf>

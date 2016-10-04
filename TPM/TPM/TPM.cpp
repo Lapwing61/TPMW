@@ -12,9 +12,16 @@ static size_t WriteCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 	return size * nmemb;	
 }
 
+//static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
+//{
+//	((string*)ptr)->append((char*)stream, size * nmemb);
+//	return size * nmemb;
+//}
+
 static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-	size_t retcode = fread(ptr, size, nmemb, (FILE*)stream);
+	size_t retcode;
+	retcode = fread(ptr, size, nmemb, (FILE*)stream);
 	return retcode;
 }
 
@@ -693,8 +700,20 @@ int main(int ac, char* av[])
 			pt3.add_child("trf", trf);
 
 			ofstream ofile(output);
+			ofstream outs("tmp.xml");
+
+			FILE * tmp;
+			struct stat	file_info;
+
 			auto settings = bpt::xml_writer_make_settings<string>('\t', 1, "windows-1251");
-			stringstream outs;
+
+			char *ourl = new char[output.length() + 1];
+			strcpy(ourl, output.c_str());
+			char *olog = new char[output_login.length() + 1];
+			strcpy(olog, output_login.c_str());
+			char *opas = new char[output_password.length() + 1];
+			strcpy(opas, output_password.c_str());
+
 			switch (out)
 			{
 				case 1:
@@ -702,18 +721,24 @@ int main(int ac, char* av[])
 					break;
 				case 2:
 					bpt::write_xml(outs, pt3, settings);
-					outs.seekg(0, ios::end);
-				    double o_size = outs.tellg();	
+					outs.close();
+
+					stat("tmp.xml", &file_info);
+					tmp = fopen("tmp.xml", "rb");
+
 					curl = curl_easy_init();
-					if (curl) {
-						curl_easy_setopt(curl, CURLOPT_URL, output);
+					errbuf[0] = 0;
+						if (curl) {
+						curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
-						curl_easy_setopt(curl, CURLOPT_READDATA, outs);
-						curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, (curl_off_t)o_size);
-						curl_easy_setopt(curl, CURLOPT_HTTPAUTH, (long)CURLAUTH_ANY);
-						curl_easy_setopt(curl, CURLOPT_USERNAME, output_login);
-						curl_easy_setopt(curl, CURLOPT_PASSWORD, output_password);
 						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+						curl_easy_setopt(curl, CURLOPT_URL, ourl);
+						curl_easy_setopt(curl, CURLOPT_READDATA, tmp);
+						curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, (curl_off_t)file_info.st_size);
+						curl_easy_setopt(curl, CURLOPT_HTTPAUTH, (long)CURLAUTH_BASIC);
+						curl_easy_setopt(curl, CURLOPT_USERNAME, olog);
+						curl_easy_setopt(curl, CURLOPT_PASSWORD, opas);
+						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
 						res = curl_easy_perform(curl);
 					}
 					curl_easy_cleanup(curl);
@@ -733,5 +758,5 @@ int main(int ac, char* av[])
 //			system("pause");
 			return 1;
 		}
-	}
+		}
 
