@@ -424,15 +424,14 @@ int main(int ac, char* av[])
 								flog << curr_time() << ": (" << it->city_name << ") " << curl_easy_strerror(res) << endl;
 
 							attempt++;
-
+							Sleep(10000);
 						}
 						else {
 							break;
 						}
 					}
 					else {
-						flog << curr_time() << ": Unknown error, aborting" << endl;
-						return 1;
+						throw runtime_error("Unknown error, aborting");
 					}
 
 					curl_easy_cleanup(curl);
@@ -700,7 +699,8 @@ int main(int ac, char* av[])
 			pt3.add_child("trf", trf);
 
 			ofstream ofile(output);
-			ofstream outs("tmp.xml");
+			string tmp_name = "tmp_" + curr_date();
+			ofstream outs(tmp_name);
 
 			FILE * tmp;
 			struct stat	file_info;
@@ -718,17 +718,18 @@ int main(int ac, char* av[])
 			{
 				case 1:
 					bpt::write_xml(ofile, pt3, settings);
+					ofile.close();
 					break;
 				case 2:
 					bpt::write_xml(outs, pt3, settings);
 					outs.close();
 
-					stat("tmp.xml", &file_info);
-					tmp = fopen("tmp.xml", "rb");
+					stat(tmp_name.c_str(), &file_info);
+					tmp = fopen(tmp_name.c_str(), "rb");
 
 					curl = curl_easy_init();
 					errbuf[0] = 0;
-						if (curl) {
+					if (curl) {
 //						curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
 						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
@@ -740,7 +741,27 @@ int main(int ac, char* av[])
 						curl_easy_setopt(curl, CURLOPT_PASSWORD, opas);
 						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
 						res = curl_easy_perform(curl);
+
+						if (res != CURLE_OK) {
+
+							size_t len = strlen(errbuf);
+							flog << to_string(res) << endl;
+							if (len) {
+								string err(errbuf);
+								flog << curr_time() << ": (" << output_file << ") " << err << endl;
+							}
+							else
+								flog << curr_time() << ": (" << output_file << ") " << curl_easy_strerror(res) << endl;
+
+							throw runtime_error("failed to put file, aborting");
+
+						}
 					}
+					else {
+						throw runtime_error("Unknown error, aborting");
+					}
+
+					remove(tmp_name.c_str());
 					curl_easy_cleanup(curl);
 					break;
 				default:
@@ -755,7 +776,6 @@ int main(int ac, char* av[])
 		}
 		catch (runtime_error& e) {
 			flog << curr_time() << ": " << e.what() << endl;
-//			system("pause");
 			return 1;
 		}
 		}
