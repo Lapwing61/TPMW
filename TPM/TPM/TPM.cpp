@@ -761,7 +761,8 @@ int main(int ac, char* av[])
 						throw runtime_error("Unknown error, aborting");
 					}
 
-					remove(tmp_name.c_str());
+					fclose(tmp);
+					if (remove(tmp_name.c_str()) != 0)  throw runtime_error("file [" + tmp_name + "] deletion error, aborting");
 					curl_easy_cleanup(curl);
 					break;
 				default:
