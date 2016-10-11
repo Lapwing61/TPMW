@@ -288,7 +288,7 @@ int main(int ac, char* av[])
 					string config = vm["config"].as<string>();
 					if (config.empty()) config = "config.ini";
 					bpt::ptree pt;
-					bpt::ini_parser::read_ini("config.ini", pt);
+					bpt::ini_parser::read_ini(config, pt);
 					provider_name = getkey(pt, "Provider.name");
 //					provider_id = getkey(pt, "Provider.id");
 					secret_key = getkey(pt, "Provider.key");
@@ -446,7 +446,16 @@ int main(int ac, char* av[])
 
 				boost::property_tree::ptree pt2;
 				stringstream ss(readBuffer);
+
+				time(&seconds);
+				sec << seconds;
+				string sc = sec.str();
+				string tmp_json_file = sc + "_" + it->city_name;
+				boost::filesystem::ofstream fjson(tmp_json_file);
+				fjson << ss.rdbuf();
+
 				boost::property_tree::json_parser::read_json(ss, pt2);
+
 
 				if (pt2.count("code")) {
 					flog << curr_time() << ": (" << it->city_name << ") " << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
@@ -695,6 +704,9 @@ int main(int ac, char* av[])
 				obj.put("<xmlattr>.zoom1", it->zoom1);
 				obj.put("<xmlattr>.zoom2", it->zoom2);
 				objs.add_child("obj", obj);
+
+				fjson.close();
+
 			}
 			trf.add_child("objs", objs);
 			pt3.add_child("trf", trf);

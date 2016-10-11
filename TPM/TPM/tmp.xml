@@ -7,16 +7,1381 @@
 		<obj id="011A2B970050B1B3" layer="Погода на карте" x="33025029.446603" y="41577072.169622" zoom1="8" zoom2="10">
 			<sdata>
 				<sdata name="#Name">Айхал</sdata>
-				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -1°</sdata>
-				<sdata name="#LabelDisp">Айхал%0D%0A-3°</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -8°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -5°</sdata>
+				<sdata name="#LabelDisp">Айхал%0D%0A-8°</sdata>
 				<sdata name="#HitZoneR">0</sdata>
-				<sdata name="#CreateTime">42647.500613</sdata>
+				<sdata name="#CreateTime">42654.306192</sdata>
 				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
-				<sdata name="#ChangeTime">42647.500613</sdata>
+				<sdata name="#ChangeTime">42654.306192</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="015BA699CAFBB18D" layer="Погода на карте" x="27116093.446639" y="46753472.169626" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Алдан</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -8°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -12°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -5°</sdata>
+				<sdata name="#LabelDisp">Алдан%0D%0A-8°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306204</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306204</sdata>
 				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
 			</sdata>
 			<signs>
 				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="01B9472A54ADFA7A" layer="Погода на карте" x="26571525.446625" y="40394492.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Алексеевск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -12°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Алексеевск%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306227</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306227</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="018E3C0BBAAC4027" layer="Погода на карте" x="26523909.446621" y="40288508.169610" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Аэропорт Киренск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Аэропорт Киренск%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306238</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306238</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="018EECFE407D3835" layer="Погода на карте" x="25896581.446617" y="39416956.169590" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Аэропорт Усть Кут</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Аэропорт Усть Кут%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306262</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306262</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01C415C9AA5B0144" layer="Погода на карте" x="22482157.446645" y="38832480.169623" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Байкальск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -2°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Байкальск%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306296</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306296</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01BCD0F6459496B6" layer="Погода на карте" x="24018541.446608" y="38425312.169614" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Балаганск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +8°</sdata>
+				<sdata name="#LabelDisp">Балаганск%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306319</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306319</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01176C9019009206" layer="Погода на карте" x="23422573.446607" y="39344224.169617" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Баяндай</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -8°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Баяндай%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306331</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306331</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="015F2EB154A2BDEC" layer="Погода на карте" x="21761029.446611" y="47549552.169598" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Благовещенск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Благовещенск%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306354</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306354</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0112F9EC33E4C6D0" layer="Погода на карте" x="26951277.446628" y="36335328.169607" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Богучаны</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -6°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Богучаны%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306366</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306366</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="017CB958A2EBFEF6" layer="Погода на карте" x="26577853.446648" y="42571712.169595" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Бодайбо</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -16°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Бодайбо%0D%0A-5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306389</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306389</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="010EB3723F9FB870" layer="Погода на карте" x="25526813.446653" y="37925760.169617" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Братск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -2°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +6°</sdata>
+				<sdata name="#LabelDisp">Братск%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306412</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306412</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01EC0301BD68FD88" layer="Погода на карте" x="27262661.446659" y="39892220.169607" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Бур</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Бур%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306424</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306424</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01D657170CF8F730" layer="Погода на карте" x="25200349.446613" y="41046912.169598" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Верхняя заимка</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -13°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°</sdata>
+				<sdata name="#LabelDisp">Верхняя заимка%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306447</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306447</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01D1D71ADB9ECF64" layer="Погода на карте" x="25585181.446646" y="38438272.169602" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Видим</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Видим%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306458</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306458</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01A039CB08E199B2" layer="Погода на карте" x="27720381.446655" y="41969344.169626" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Витим</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°</sdata>
+				<sdata name="#LabelDisp">Витим%0D%0A-5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306481</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306481</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01F62FA98EE986FA" layer="Погода на карте" x="36432957.446683" y="32142784.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Дудинка</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -6°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Дудинка%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306505</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306505</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="010D395F592083CB" layer="Погода на карте" x="23266029.446638" y="39674976.169619" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Еланцы</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Еланцы%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306516</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306516</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01658BFC242F808C" layer="Погода на карте" x="29098949.446610" y="40274300.169603" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Ербогачен</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -3°</sdata>
+				<sdata name="#LabelDisp">Ербогачен%0D%0A-5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306539</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306539</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01AB959743DF1784" layer="Погода на карте" x="28408181.446621" y="40177648.169606" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Ерема</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°</sdata>
+				<sdata name="#LabelDisp">Ерема%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306551</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306551</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0166E618D15F4502" layer="Погода на карте" x="24523613.446608" y="39217184.169599" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Жигалово</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Жигалово%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306574</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306574</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="017193FCEAD8B908" layer="Погода на карте" x="21386757.446640" y="43753584.169614" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Забайкальск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +6°</sdata>
+				<sdata name="#LabelDisp">Забайкальск%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306597</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306597</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01DB8D09E820BC97" layer="Погода на карте" x="23741037.446651" y="38222816.169606" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Залари</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +8°</sdata>
+				<sdata name="#LabelDisp">Залари%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306609</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306609</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0166B71CB0A19EB9" layer="Погода на карте" x="23963245.446606" y="38051936.169593" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Зима</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Зима%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306632</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306632</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01936E19A7B65842" layer="Погода на карте" x="22943981.446634" y="38873440.169604" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Иркутск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +9°</sdata>
+				<sdata name="#LabelDisp">Иркутск%0D%0A+4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306644</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306644</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01B43DF39B36E11E" layer="Погода на карте" x="25878045.446607" y="39107008.169608" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Каймоново</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Каймоново%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306678</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306678</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0148DC9BA199E922" layer="Погода на карте" x="25460333.446631" y="35671008.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Канск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -2°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\rain-2.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Канск%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306701</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306701</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="014045AD0B6B2711" layer="Погода на карте" x="24000349.446614" y="39461920.169610" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Качуг</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Качуг%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306725</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306725</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0112F92666A0D701" layer="Погода на карте" x="26525957.446610" y="40307708.169615" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Киренск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Киренск%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306736</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306736</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="018B12C1F3321A9D" layer="Погода на карте" x="25268445.446608" y="41049792.169612" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Кичера</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -13°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Кичера%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306759</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306759</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0188255C9812826E" layer="Погода на карте" x="29885757.446603" y="27768256.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Когалым</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Когалым%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306771</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306771</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="0127BEF75B90434B" layer="Погода на карте" x="27116141.446612" y="36970464.169613" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Кодинск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Кодинск%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306794</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306794</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01B3CE564D1BC4B6" layer="Погода на карте" x="25335405.446635" y="34647008.169616" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Красноярск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -2°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow-2.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Красноярск%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306806</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306806</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="013190A4760500E4" layer="Погода на карте" x="26405893.446654" y="40201468.169593" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Кривая Лука</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Кривая Лука%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306829</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306829</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0194FF37D0087773" layer="Погода на карте" x="25157229.446646" y="40432224.169615" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Кунерма</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -17°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Кунерма%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306852</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306852</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01970C8C35D1884F" layer="Погода на карте" x="22583917.446640" y="38075616.169603" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Кырен</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E +2°</sdata>
+				<sdata name="#LabelDisp">Кырен%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306863</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306863</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="01C804D45C04D01B" layer="Погода на карте" x="28671421.446622" y="42837952.169623" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Ленск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -6°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -8°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -3°</sdata>
+				<sdata name="#LabelDisp">Ленск%0D%0A-6°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306887</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306887</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="0104FD170B93C274" layer="Погода на карте" x="26839277.446629" y="34479712.169599" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Лесосибирск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\rain-2.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Лесосибирск%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306898</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306898</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="01DD6AC28BBAC70A" layer="Погода на карте" x="22699245.446662" y="39083872.169596" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Листвянка</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +8°</sdata>
+				<sdata name="#LabelDisp">Листвянка%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306921</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306921</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0195EFFF931FEC1D" layer="Погода на карте" x="25436125.446603" y="40059840.169616" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Магистральный</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +2°</sdata>
+				<sdata name="#LabelDisp">Магистральный%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306944</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306944</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="010867A136AEF8A1" layer="Погода на карте" x="26901949.446642" y="42095552.169607" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Мама</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -6°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -14°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Мама%0D%0A-6°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306956</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306956</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0123A871DD3B5153" layer="Погода на карте" x="30097413.446632" y="42475120.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Мирный</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -6°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Мирный%0D%0A-6°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.306979</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.306979</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="014D138618345FE7" layer="Погода на карте" x="23815685.446605" y="44633712.169592" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Могоча</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Могоча%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307002</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307002</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="019BF34F7843ED13" layer="Погода на карте" x="22578797.446618" y="37655264.169614" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Монды</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -18°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Монды%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307014</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307014</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="014286C3A26C4724" layer="Погода на карте" x="27573189.446651" y="40352892.169604" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Непа</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Непа%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307072</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307072</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0178CCC566D1A831" layer="Погода на карте" x="25759293.446599" y="46525120.169614" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Нерюнгри</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -8°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -12°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -6°</sdata>
+				<sdata name="#LabelDisp">Нерюнгри%0D%0A-8°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307083</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307083</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="014746D1502E05E9" layer="Погода на карте" x="28837181.446606" y="28584128.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Нижневартовск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Нижневартовск%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307106</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307106</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="017185C008F02F03" layer="Погода на карте" x="24590061.446651" y="36923744.169604" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Нижнеудинск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Нижнеудинск%0D%0A+5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307118</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307118</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0158CF82A40DF456" layer="Погода на карте" x="25692781.446665" y="39821408.169593" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Ния</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +2°</sdata>
+				<sdata name="#LabelDisp">Ния%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307141</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307141</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0172188FB2255AE9" layer="Погода на карте" x="26087965.446638" y="38754688.169618" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Новая Игирма</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Новая Игирма%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307164</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307164</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0165F54D64D1EB72" layer="Погода на карте" x="33179709.446622" y="28560832.169624" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Новый Уренгой</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Новый Уренгой%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307176</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307176</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="013C554868A1DF9F" layer="Погода на карте" x="36370493.446632" y="32881088.169608" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Норильск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Норильск%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307199</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307199</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0179F097C864FA2F" layer="Погода на карте" x="28416573.446621" y="44908224.169593" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Олекминск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -3°</sdata>
+				<sdata name="#LabelDisp">Олекминск%0D%0A-5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307211</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307211</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="0185F5B34186C985" layer="Погода на карте" x="24631869.446657" y="27339328.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Омск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Омск%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307234</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307234</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01A8AA3CFB27A8CD" layer="Погода на карте" x="25345085.446636" y="39465344.169623" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Орлинга</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Орлинга%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307245</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307245</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01C15C6E210C9BEB" layer="Погода на карте" x="28744501.446614" y="40260144.169609" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Оськино</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -12°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°</sdata>
+				<sdata name="#LabelDisp">Оськино%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307292</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307292</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01370B7900DEA012" layer="Погода на карте" x="26913497.446628" y="39916820.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">ПНС6</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">ПНС6%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307315</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307315</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01E120D47E7251E7" layer="Погода на карте" x="26858053.446631" y="40425084.169603" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Подволошино</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Подволошино%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307338</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307338</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01170F0348333AC6" layer="Погода на карте" x="22755949.446622" y="38734816.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Подкаменная</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +8°</sdata>
+				<sdata name="#LabelDisp">Подкаменная%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307350</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307350</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01B57E8280AF5A49" layer="Погода на карте" x="25968773.446645" y="39582076.169613" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Подымахино</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Подымахино%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307373</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307373</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0164F280DD9FCEC4" layer="Погода на карте" x="33633853.446654" y="24844864.169606" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Салехард</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Салехард%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307384</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307384</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="010C4F805CE47C99" layer="Погода на карте" x="23397645.446627" y="39849264.169624" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Сахюрта</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -1°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Сахюрта%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307407</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307407</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01731327C7E00D6D" layer="Погода на карте" x="25073149.446616" y="40761344.169622" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Северобайкальск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Северобайкальск%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307442</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307442</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0190F8D85D75CB1D" layer="Погода на карте" x="25435453.446650" y="42338752.169599" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Северомуйск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -7°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -19°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -6°</sdata>
+				<sdata name="#LabelDisp">Северомуйск%0D%0A-7°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307465</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307465</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01DEEF049A5F40B1" layer="Погода на карте" x="24014341.446627" y="46290544.169606" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Сковородино</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Сковородино%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307488</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307488</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="018503B946EB9AE5" layer="Погода на карте" x="22579309.446652" y="38662112.169604" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Слюдянка</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -6°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +6°</sdata>
+				<sdata name="#LabelDisp">Слюдянка%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307500</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307500</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="011FCDD23E0F6E2F" layer="Погода на карте" x="29118781.446653" y="27360448.169599" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Сургут</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -3°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Сургут%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307523</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307523</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="014182565270CABD" layer="Погода на карте" x="25294445.446649" y="36537312.169620" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Тайшет</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -1°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\rain.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Тайшет%0D%0A+5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307535</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307535</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="014079A8BE2FD1B8" layer="Погода на карте" x="25546557.446606" y="42832832.169607" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Таксимо</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -6°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -14°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Таксимо%0D%0A-6°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307558</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307558</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01306F63ADEF1A25" layer="Погода на карте" x="25919805.446647" y="27725376.169604" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Тара</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E +2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Тара%0D%0A+2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307581</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307581</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="01AA352F4A1D5A08" layer="Погода на карте" x="32110653.446673" y="28977600.169617" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Тарко Сале</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Тарко Сале%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307593</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307593</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01B9AFDDBC446987" layer="Погода на карте" x="26178261.446658" y="39973740.169609" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">тира</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">тира%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307616</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307616</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="017132C6CBA9AF1D" layer="Погода на карте" x="26860229.446642" y="39469948.169621" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Токма</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°</sdata>
+				<sdata name="#LabelDisp">Токма%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307627</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307627</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01BB776DBA3E3A0B" layer="Погода на карте" x="24376941.446629" y="37495904.169619" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Тулун</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Тулун%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307650</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307650</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01A09DBC0802F401" layer="Погода на карте" x="24751165.446608" y="46510784.169591" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Тында</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -1°</sdata>
+				<sdata name="#LabelDisp">Тында%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307662</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307662</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="012DAD4F342BFCFF" layer="Погода на карте" x="33458181.446627" y="41867888.169594" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Удачный</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -7°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\snow.png%22 /%3E -4°</sdata>
+				<sdata name="#LabelDisp">Удачный%0D%0A-7°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307685</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307685</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01B941FBB19AA368" layer="Погода на карте" x="22673133.446617" y="40124768.169609" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Улан Удэ</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +7°</sdata>
+				<sdata name="#LabelDisp">Улан Удэ%0D%0A+3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307708</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307708</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01BB7620F722810E" layer="Погода на карте" x="25247197.446647" y="40190656.169619" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Улькан</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -9°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +2°</sdata>
+				<sdata name="#LabelDisp">Улькан%0D%0A-1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307720</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307720</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01CFAA4EC9D3B2DE" layer="Погода на карте" x="25400285.446600" y="41612160.169617" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Уоян</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -2°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -11°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Уоян%0D%0A-2°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307743</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307743</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="018BCCE2A94FCFD3" layer="Погода на карте" x="23240301.446614" y="38640736.169605" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Усолье Сибирское</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +9°</sdata>
+				<sdata name="#LabelDisp">Усолье Сибирское%0D%0A+4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307755</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307755</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="015A1D85A50A4B03" layer="Погода на карте" x="26655261.446644" y="38317440.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Усть Илимск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Усть Илимск%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307778</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307778</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01C3BD79BD2F2207" layer="Погода на карте" x="25856645.446611" y="39466876.169619" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Усть Кут</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -10°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Усть Кут%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307824</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307824</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0197ED57FC8AD8FC" layer="Погода на карте" x="29664117.446611" y="40332912.169611" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Хамкар</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E -5°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -8°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -3°</sdata>
+				<sdata name="#LabelDisp">Хамкар%0D%0A-5°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307847</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307847</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0108C284ABD51273" layer="Погода на карте" x="28906813.446613" y="25726144.169590" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Ханты-Мансийск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +2°</sdata>
+				<sdata name="#LabelDisp">Ханты-Мансийск%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307870</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307870</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01292D4A50AC4BB9" layer="Погода на карте" x="22393349.446644" y="41179248.169600" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Хилок</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +5°</sdata>
+				<sdata name="#LabelDisp">Хилок%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307882</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307882</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="0190AD05A879CC45" layer="Погода на карте" x="25805469.446655" y="38872960.169614" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Хребтовая</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Хребтовая%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307905</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307905</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01A47C612C9F119E" layer="Погода на карте" x="23105029.446635" y="43624048.169597" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Чернышевск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -7°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Чернышевск%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307917</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307917</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="C7E2CFAA"/>
+			</signs>
+		</obj>
+		<obj id="01D876353CFBB863" layer="Погода на карте" x="26738885.446646" y="40528124.169605" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Чечуйск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E -3°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -13°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Чечуйск%0D%0A-3°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307940</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307940</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01F07DAC04F9B944" layer="Погода на карте" x="22798061.446647" y="42312032.169590" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Чита</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -8°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\clear-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Чита%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307951</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307951</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="01D1BFDC649C6FE1" layer="Погода на карте" x="26233821.446651" y="38077888.169610" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Эдучанка</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +1°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\clear-night.png%22 /%3E -4°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +4°</sdata>
+				<sdata name="#LabelDisp">Эдучанка%0D%0A+1°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307975</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307975</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
+			</signs>
+		</obj>
+		<obj id="0126C094C04CB0FF" layer="Погода на карте" x="29695549.446621" y="48353984.169610" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Якутск</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E -4°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -5°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\cloudy.png%22 /%3E 0°</sdata>
+				<sdata name="#LabelDisp">Якутск%0D%0A-4°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.307986</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.307986</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="148DCB01"/>
+			</signs>
+		</obj>
+		<obj id="01C3D57E42A999F7" layer="Погода на карте" x="25885149.446659" y="39239552.169619" zoom1="8" zoom2="10">
+			<sdata>
+				<sdata name="#Name">Янталь</sdata>
+				<sdata name="#Comments">Сейчас: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E 0°%0D%0AНочью: %3Cimg src=%22file://.\Wthr\partly-cloudy-night.png%22 /%3E -8°%0D%0AЗавтра: %3Cimg src=%22file://.\Wthr\partly-cloudy-day.png%22 /%3E +3°</sdata>
+				<sdata name="#LabelDisp">Янталь%0D%0A0°</sdata>
+				<sdata name="#HitZoneR">0</sdata>
+				<sdata name="#CreateTime">42654.308009</sdata>
+				<sdata name="#CreateUser">2388627466|Модуль импорта погоды</sdata>
+				<sdata name="#ChangeTime">42654.308009</sdata>
+				<sdata name="#ChangeUser">2388627466|Модуль импорта погоды</sdata>
+			</sdata>
+			<signs>
+				<sign x="0" y="0" libcrc="D49851ED"/>
 			</signs>
 		</obj>
 	</objs>
