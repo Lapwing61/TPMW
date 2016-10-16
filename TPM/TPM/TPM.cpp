@@ -6,18 +6,14 @@ using namespace std;
 namespace bpt = boost::property_tree;
 namespace bpo = boost::program_options;
 
+//Callback-функция: используется CURL при отправке запроса для обработки принятых данных  
 static size_t WriteCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
 	((string*)stream)->append((char*)ptr, size * nmemb);
 	return size * nmemb;	
 }
 
-//static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
-//{
-//	((string*)ptr)->append((char*)stream, size * nmemb);
-//	return size * nmemb;
-//}
-
+//Callback-функция: используется CURL при отправке данных из файла 
 static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
 	size_t retcode;
@@ -25,27 +21,26 @@ static size_t ReadCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 	return retcode;
 }
 
-typedef boost::char_separator<char> sep_type;
-typedef boost::tokenizer<sep_type> tok_type;
+//Cледующий блок переменных используется при разборе csv файла ( до '===' )
 
 struct my_type
 {
 	int val;
 };
 
-ostream & operator << (ostream & strm, const my_type & t)
+ostream & operator << (ostream & strm, const my_type & t)	//Должна быть определенена для boost::lexical_cast
 {
 	strm << t.val;
 	return strm;
 }
 
-istream & operator >> (istream & strm, my_type & t)
+istream & operator >> (istream & strm, my_type & t)			//Должна быть определенена для boost::lexical_cast
 {
 	strm >> t.val;
 	return strm;
 }
 
-struct city
+struct city			//Структура хранения данных из строки csv файла
 {
 	string city_name;
 	string city_id;
@@ -55,20 +50,13 @@ struct city
 	string zoom2;
 };
 
-typedef vector<city> vec_type;
+//Определения типов
+typedef boost::char_separator<char> sep_type;	//Для разделителя
+typedef boost::tokenizer<sep_type> tok_type;	//Для разбора строки
 
-struct weather_hourly
-{
-	string	utime;
-	int		hour;
-	string  icon_src;
-	string  icon_crc;
-	string	temperature;
-};
+typedef vector<city> vec_type;					//Для хранения результатов (Вектор)
 
-typedef vector<weather_hourly> vec_wh;
-
-template <typename InputIterator, typename ValueT>
+template <typename InputIterator, typename ValueT>	//получение значения элемента с проверкой 
 void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
 {
 	if (pos == end)
@@ -79,8 +67,7 @@ void bindVariable(InputIterator pos, InputIterator end, ValueT & val)
 	    val = boost::lexical_cast<ValueT>(*pos);
 }
 
-
-template <typename InputIterator>
+template <typename InputIterator>					//разбор строки csv файла
 void parseCsvLine(InputIterator it, InputIterator end, city & res)
 {
 	bindVariable(it, end, res.city_name); ++it;
@@ -90,8 +77,24 @@ void parseCsvLine(InputIterator it, InputIterator end, city & res)
 	bindVariable(it, end, res.zoom1); ++it;
 	bindVariable(it, end, res.zoom2); ++it;
 
+
 }
 
+//====================================================
+
+//Структура хранения почасовых погодных данных (ППД)
+struct weather_hourly
+{
+	string	utime;
+	int		hour;
+	string  icon_src;
+	string  icon_crc;
+	string	temperature;
+};
+
+typedef vector<weather_hourly> vec_wh;		//Вектор для хранения ППД
+
+//Функция получения текущей даты в формате YYMMDD 
 string curr_date()
 {
 	stringstream tt;
@@ -103,6 +106,7 @@ string curr_date()
 	return dd;
 }
 
+//Функция получения текущего времени в формате hh:mm:ss 
 string curr_time()
 {
 	stringstream tt;
@@ -114,8 +118,10 @@ string curr_time()
 	return dd;
 }
 
+//Поток для вывода в лог-файл
 boost::filesystem::ofstream flog;
 
+//Функция получения значения ключа из config.ini с аварийным выходом при отсутствии значения
 string getkey(bpt::ptree tree, string key)
 {
 	string okey;
@@ -131,6 +137,7 @@ string getkey(bpt::ptree tree, string key)
 	return okey;
 }
 
+//Функция получения значения ключа из config.ini с подстановкой значения по умолчанию при отсутствии значения
 string getkeyd(bpt::ptree tree, string key, string def)
 {
 	string okey;
@@ -143,14 +150,16 @@ string getkeyd(bpt::ptree tree, string key, string def)
 	return okey;
 }
 
+//Основная функция
 int main(int ac, char* av[])
 {
-	SetConsoleOutputCP(1251);
+	SetConsoleOutputCP(1251);	//вывод в Windows-1251 
 
 	time_t seconds;
 	stringstream sec;
 
-	time(&seconds);
+//Создание лог-файла
+	time(&seconds);		//Время в секундах
 	sec << seconds;
 	string spath = sec.str();
 	string lpath = "\\LOG\\" + curr_date();
@@ -159,40 +168,43 @@ int main(int ac, char* av[])
 	boost::filesystem::path logpath;
 	logpath += cpath;
 	logpath += lpath;
-	if (!boost::filesystem::is_directory(logpath)) boost::filesystem::create_directories(logpath);
+	if (!boost::filesystem::is_directory(logpath)) boost::filesystem::create_directories(logpath);	//Создается папка для лог-файла если отсутствует
 	boost::filesystem::path logfile;
 	logfile = logpath;
 	logfile += lfile;
 	boost::filesystem::ofstream flog(logfile);
 
+//Основной блок 
 	try{
 
-		flog << curr_time() << ": Starting" << endl;
+		flog << curr_time() << ": Starting" << endl;	//Начинаем работу
 
-		bpo::options_description desc("Allowed options");
+		bpo::options_description desc("Allowed options");		//Описание параметров 
 			desc.add_options()
 				("help,h", "help message")
 				("config,c", bpo::value<std::string>(), "configuration file")
 				("list,l", bpo::value<std::string>(), "list of points")
 				;
 
+//Прием параметров из командной строки
 			bpo::variables_map vm;
 			bpo::parsed_options parsed = bpo::command_line_parser(ac, av).options(desc).allow_unregistered().run();
 			bpo::store(parsed, vm);
-			bpo::notify(vm);
+			bpo::notify(vm);	
 
-			if (vm.count("help")) {
+			if (vm.count("help")) {			//Если "-help" или "--h" то вывод справки
 				cout << desc << "\n";
 				return 0;
 			}
 
-			string list;
+			string list;					//Если "-list" или "--l" то получение имя списка городов. По умолчанию: city.csv  
 			if (vm.count("list")) {
 				list = vm["list"].as<string>();
 				if (list.empty()) list = "city.csv";
 			}	
 			else list = "city.csv";
 
+//Описание переменных используемых при разборе конфигурационного файла
 			string provider_name;
 			string provider_id;
 			string secret_key;
@@ -230,32 +242,33 @@ int main(int ac, char* av[])
 			string crc_partly_cloudy_day;
 			string crc_partly_cloudy_night;
 
-			int out = 0;
+			int out = 0;	//По умолчанию - вывод на экран
 
-			if (ac == 1) {
+			if (ac == 1) {														//Если отсутствуют параметры командной строки
 				bpt::ptree pt;
-				bpt::ini_parser::read_ini("config.ini", pt);
-				provider_name = getkey(pt, "Provider.name");
+				bpt::ini_parser::read_ini("config.ini", pt);					//По умолчанию - config.ini
+				provider_name = getkey(pt, "Provider.name");					//Адрес входного сайта
 //				provider_id = getkey(pt, "Provider.id");
-				secret_key = getkey(pt, "Provider.key");
+				secret_key = getkey(pt, "Provider.key");						//Секретный ключ
 
 //				output_type = getkeyd(pt, "Output.type","XML");
-				output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
-				output_dir = getkeyd(pt,"Output.dir","");
+				output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");		//Имя выходного файла (по умолчанию 	- Weather.xmltrf) 
+				output_dir = getkeyd(pt,"Output.dir","");						//Имя выходной директории (по умолчанию - пустая строка)
 				if (output_dir != "") {
-					output = output_dir + "\\" + output_file;
-					out = 1;
+					output = output_dir + "\\" + output_file;					
+					out = 1;													//Если выходная дериктория не пустая - устанавливаем вывод в файл
 				}
-				else {
-					output_site = getkeyd(pt,"Output.site","");
+				else {				
+					output_site = getkeyd(pt,"Output.site","");					//Иначе считывает имя сайта для вывода
 					if (output_site != "") {
-						output_login = getkey(pt, "Output.login");
-						output_password = getkey(pt, "Output.password");
-						output = output_site + "/" + output_file;
-						out = 2;
+						output_login = getkey(pt, "Output.login");				//Логин
+						output_password = getkey(pt, "Output.password");		//Пароль
+						output = output_site + "/" + output_file;				
+						out = 2;												//Вывод на сайт
 					}
 				}
 
+//Погодные иконки
 				src_clear_day = getkey(pt, "Icons_src.clear_day");
 				src_clear_night = getkey(pt, "Icons_src.clear_night");
 				src_rain = getkey(pt, "Icons_src.rain");
@@ -283,33 +296,34 @@ int main(int ac, char* av[])
 				crc_partly_cloudy_night = getkey(pt, "Icons_crc.partly_cloudy_night");
 
 			}
-			else 
-				if (vm.count("config")) {
-					string config = vm["config"].as<string>();
-					if (config.empty()) config = "config.ini";
+			else																	//Если есть параметры командной строки
+				if (vm.count("config")) {											//Если существует параметр config
+					string config = vm["config"].as<string>();						
+					if (config.empty()) config = "config.ini";						//При пустом значении - config.ini
 					bpt::ptree pt;
 					bpt::ini_parser::read_ini(config, pt);
-					provider_name = getkey(pt, "Provider.name");
+					provider_name = getkey(pt, "Provider.name");					//Адрес входного сайта
 //					provider_id = getkey(pt, "Provider.id");
-					secret_key = getkey(pt, "Provider.key");
+					secret_key = getkey(pt, "Provider.key");						//Секретный ключ
 
 //					output_type = getkeyd(pt, "Output.type","XML");
-					output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");
-					output_dir = getkeyd(pt, "Output.dir", "");
+					output_file = getkeyd(pt, "Output.file", "Weather.xmltrf");		//Имя выходного файла (по умолчанию 	- Weather.xmltrf) 
+					output_dir = getkeyd(pt, "Output.dir", "");						//Имя выходной директории (по умолчанию - пустая строка)
 					if (output_dir != "") {
 						output = output_dir + "\\" + output_file;
-						out = 1;
+						out = 1;													//Если выходная дериктория не пустая - устанавливаем вывод в файл
 					}
 					else {
-						output_site = getkeyd(pt, "Output.site", "");
+						output_site = getkeyd(pt, "Output.site", "");				//Иначе считывает имя сайта для вывода
 						if (output_site != "") {
-							output_login = getkey(pt, "Output.login");
-							output_password = getkey(pt, "Output.password");
+							output_login = getkey(pt, "Output.login");				//Логин
+							output_password = getkey(pt, "Output.password");		//Пароль
 							output = output_site + "/" + output_file;
-							out = 2;
+							out = 2;												//Вывод на сайт
 						}
 					}
 
+//Погодные иконки
 					src_clear_day = getkey(pt, "Icons_src.clear_day");
 					src_clear_night = getkey(pt, "Icons_src.clear_night");
 					src_rain = getkey(pt, "Icons_src.rain");
@@ -341,78 +355,84 @@ int main(int ac, char* av[])
 					throw runtime_error("configuration file is required, aborting");
 				}
 
+//Переменные используемые при запросе CURL
 			CURL *curl;
 			CURLcode res;
-			char errbuf[CURL_ERROR_SIZE];
+			char errbuf[CURL_ERROR_SIZE];	//Буффер для строки с описанием ошибки
+//Глобальная инициализация
 			curl_global_init(CURL_GLOBAL_DEFAULT);
 
+//XML и узлы (начало)
 			bpt::ptree pt3;
 			bpt::ptree trf;
 			bpt::ptree replacelayers;
 			bpt::ptree objs;
 
+//Создаем узел replacelayers [с детьми ;-)]
 			replacelayers.add("layer", "Погода на карте");
 			trf.add_child("replacelayers", replacelayers);
 
+//Открываем файл списка городов 
 			ifstream ifile(list);
 			if (!ifile.is_open())
 			{
-//				flog << curr_time() << list << ": Не могу открыть файл" << endl;
 				throw runtime_error(list + ": cannot open file, aborting"); 
 			}	
 
-			string line;
-			sep_type sep(";");
-			vec_type vec;
+			string line;			//Строка ввода
+			sep_type sep(";");		//Разделитель
+			vec_type vec;			//Вектор для хранения полученных данных
 
+//Считываем данные из файл с анализом
 			while (!ifile.eof())
 			{
-				getline(ifile, line);
+				getline(ifile, line);		
 				tok_type tok(line, sep);
 
 				city tmp;
-				parseCsvLine(tok.begin(), tok.end(), tmp);
+				parseCsvLine(tok.begin(), tok.end(), tmp);	
 				vec.push_back(tmp);
 			}
 
 			int i = 0;
 
-
+//Цикл по городам
 			for (vec_type::const_iterator it = vec.begin(); it != vec.end(); ++it)
 			
 			{
+//Узлы (окончание)
 				bpt::ptree obj;
 				bpt::ptree sdata1;
 				bpt::ptree sdata2;
 				bpt::ptree signs;
 				bpt::ptree sign;
+
 				string err;
 
-//   		    if (((i % 10) == 0) && (i != 0)) Sleep(60000);
-
+//Формирование запроса
 				string surl = "https://" + provider_name + "/forecast/" + secret_key + "/" + it->lat + "," + it->lon + "?units=si";
 				char *url = new char[surl.length() + 1];
 				strcpy(url, surl.c_str());
-				int attempt = 0;
-				string readBuffer;
+
+				int attempt = 0;		//Количество попыток
+				string readBuffer;		//Буффер приема данных
 
 				do {
 
-					errbuf[0] = 0;
+					errbuf[0] = 0;		//Обнуляем строку для описания ошибки
 					curl = curl_easy_init();
 
 					if (curl) {
 
-//						flog << curr_time() << ": Город: " << it->city_name << " Широта: " << it->lat << " Долгота: " << it->lon << endl;
-
+//Опции запроса
 						curl_easy_setopt(curl, CURLOPT_URL, url);
 						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
 						curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
 						curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-
+//Выполнение запроса
 						res = curl_easy_perform(curl);	
 
-						if (res != CURLE_OK) {
+						if (res != CURLE_OK) {			//Запрос вернул ошибку
 
 							size_t len = strlen(errbuf);
 							flog << to_string(res) << endl;
@@ -424,7 +444,7 @@ int main(int ac, char* av[])
 								flog << curr_time() << ": (" << it->city_name << ") " << curl_easy_strerror(res) << endl;
 
 							attempt++;
-							Sleep(10000);
+							Sleep(10000);	//Ждем 10 сек
 						}
 						else {
 							break;
@@ -438,14 +458,13 @@ int main(int ac, char* av[])
 
 				} while (attempt < 3);
 
+//Если попыток > 3 - выход
 				if (attempt == 3) {
-//					flog << curr_time() << "Ошибка соединения" << endl;
 					throw runtime_error("failed to connect, aborting");
 				}
 
-				boost::property_tree::ptree pt2;
-				stringstream ss(readBuffer);
-
+				stringstream ss(readBuffer);	
+//Создаем временный файл в который выводим ответ на запрос (Создаем копию)
 				time_t scnds;
 				stringstream sn;
 				time(&scnds);
@@ -456,14 +475,17 @@ int main(int ac, char* av[])
  				stringstream ss2(ss.str());
 				fjson << ss2.rdbuf();
 
+//Анализ (парсинг) принятой строки
+				boost::property_tree::ptree pt2;
 				boost::property_tree::json_parser::read_json(ss, pt2);
 
-
+//Если В ответе есть ключ "code" вывод строки об ошибке при обработке запроса сайтом и выход
 				if (pt2.count("code")) {
 					flog << curr_time() << ": (" << it->city_name << ") " << ": Код ошибки:" << pt2.get<string>("code") << " Текст ошибки: " << pt2.get<string>("error") << endl;
 					throw runtime_error("The request failed, aborting");
  				}
 
+//Часовой пояс. Определение смещения
 				int tz = 0;
 				if (pt2.get<string>("timezone") == "Asia/Yekaterinburg")  tz = 5;
 				if (pt2.get<string>("timezone") == "Asia/Omsk")  tz = 6;
@@ -472,13 +494,15 @@ int main(int ac, char* av[])
 				if (pt2.get<string>("timezone") == "Asia/Chita")  tz = 8;
 				if (pt2.get<string>("timezone") == "Asia/Yakutsk")  tz = 9;
 
+//Данные о текуще погоде
 				weather_hourly current_weather;
 				current_weather.utime = pt2.get<string>("currently.time");
 				current_weather.hour = (((stoi(current_weather.utime)) % 86400) / 3600 + tz) % 24;
 
-				string icon = pt2.get<string>("currently.icon");
-				float precip = pt2.get<float>("currently.precipIntensity");
+				float precip = pt2.get<float>("currently.precipIntensity");		//Интенсивность осадков
 
+//Иконка текущей погоды
+				string icon = pt2.get<string>("currently.icon");
 				if (icon == "clear-day") { 
 					current_weather.icon_src = src_clear_day;
 					current_weather.icon_crc = crc_clear_day;
@@ -533,18 +557,19 @@ int main(int ac, char* av[])
 				}
 
 				current_weather.temperature = to_string(lround(stoi(pt2.get<string>("currently.temperature"))));
-			
-				vec_wh hourly_weather;
 
+//Прием почасовой погоды (в вектор)
+				vec_wh hourly_weather;
 				BOOST_FOREACH(auto &v, pt2.get_child("hourly.data"))
 				{
 					weather_hourly tmp2;
 					assert(v.first.empty()); 
 					tmp2.utime = v.second.get<string>("time");
-					tmp2.hour = (((stoi(tmp2.utime)) % 86400) / 3600 + 8) % 24;
-					string icon = v.second.get<string>("icon");
-					float precip = v.second.get<float>("precipIntensity");
+					tmp2.hour = (((stoi(tmp2.utime)) % 86400) / 3600 + 8) % 24;	//Перевод времени в delphi формат
+					float precip = v.second.get<float>("precipIntensity");		//Интенсивность осадков
 
+//Иконки почасовой погоды
+					string icon = v.second.get<string>("icon");
 					if (icon == "clear-day") {
 						tmp2.icon_src = src_clear_day;
 						tmp2.icon_crc = crc_clear_day;
@@ -610,6 +635,7 @@ int main(int ac, char* av[])
 				string tmp4;
 				string tmp5;
 
+//Знак + перед положительной температурой
 				if (stof(current_weather.temperature) > 0)
 					tmp3 = "+";
 				else
@@ -625,6 +651,7 @@ int main(int ac, char* av[])
 				else
 					tmp5 = "";
 
+//Формируем содержимое узла sdata(внутреннего)
 				current_w = "Сейчас: %3Cimg src=%22" + current_weather.icon_src + "%22 /%3E " + tmp3 + current_weather.temperature + "°";
 
 					if ((current_weather.hour >= 0) && (current_weather.hour <= 11)) {
@@ -637,53 +664,54 @@ int main(int ac, char* av[])
 					}
 
 				i++;
-				sdata2.put("<xmlattr>.name", "#Name");
+				sdata2.put("<xmlattr>.name", "#Name");												//#Name
 				sdata2.put_value(it->city_name);
 				sdata1.add_child("sdata", sdata2);
 
 				string comments;
-				comments = current_w + first_w + second_w;
+				comments = current_w + first_w + second_w;											//#Comments
 				sdata2.put("<xmlattr>.name", "#Comments");
 				sdata2.put_value(comments);
 				sdata1.add_child("sdata", sdata2);
 
 				string labeldisp;
-				labeldisp = it->city_name + "%0D%0A" + tmp3 + current_weather.temperature + "°";
+				labeldisp = it->city_name + "%0D%0A" + tmp3 + current_weather.temperature + "°";	//#LabelDisp		
 				sdata2.put("<xmlattr>.name", "#LabelDisp");
 				sdata2.put_value(labeldisp);
 				sdata1.add_child("sdata", sdata2);
 
-				sdata2.put("<xmlattr>.name", "#HitZoneR");
+				sdata2.put("<xmlattr>.name", "#HitZoneR");											//#HitZoneR
 				sdata2.put_value("0");
 				sdata1.add_child("sdata", sdata2);
 
 				time_t current_time = time(NULL);
 				double delphi_time = ((double)current_time / 86400) + 25569;
 
-				sdata2.put("<xmlattr>.name", "#CreateTime");
+				sdata2.put("<xmlattr>.name", "#CreateTime");										//#CreateTime
 				sdata2.put_value(to_string(delphi_time));
 				sdata1.add_child("sdata", sdata2);
 
-				sdata2.put("<xmlattr>.name", "#CreateUser");
+				sdata2.put("<xmlattr>.name", "#CreateUser");										//#CreateUser
 				sdata2.put_value("2388627466|Модуль импорта погоды");
 				sdata1.add_child("sdata", sdata2);
 
-				sdata2.put("<xmlattr>.name", "#ChangeTime");
+				sdata2.put("<xmlattr>.name", "#ChangeTime");										//#ChangeTime
 				sdata2.put_value(to_string(delphi_time));
 				sdata1.add_child("sdata", sdata2);
 
-				sdata2.put("<xmlattr>.name", "#ChangeUser");
+				sdata2.put("<xmlattr>.name", "#ChangeUser");										//#ChangeUser
 				sdata2.put_value("2388627466|Модуль импорта погоды");
 				sdata1.add_child("sdata", sdata2);
-				obj.add_child("sdata", sdata1);
+				obj.add_child("sdata", sdata1);														//sdata (внешнее)
 
 				string libcrc = current_weather.icon_crc;
  				sign.put("<xmlattr>.x", 0);
 				sign.put("<xmlattr>.y", 0);
 				sign.put("<xmlattr>.libcrc", libcrc);
-				signs.add_child("sign", sign);
-				obj.add_child("signs", signs);
+				signs.add_child("sign", sign);														//sign
+				obj.add_child("signs", signs);														//signs
 
+//Пересчет координат
 				double EarthMapSize = 134217728;
 				double gx = stod(it->lat);
 				double gy = stod(it->lon);
@@ -705,16 +733,18 @@ int main(int ac, char* av[])
 				obj.put("<xmlattr>.y", to_string(my));
 				obj.put("<xmlattr>.zoom1", it->zoom1);
 				obj.put("<xmlattr>.zoom2", it->zoom2);
-				objs.add_child("obj", obj);
+				objs.add_child("obj", obj);															//obj
 
 				fjson.close();
 				remove(tmp_json_file.c_str());
 
 			}
-			trf.add_child("objs", objs);
-			pt3.add_child("trf", trf);
+			trf.add_child("objs", objs);															//objs
+			pt3.add_child("trf", trf);																//trf
 
+//Вывод в файл
 			ofstream ofile(output);
+//Отправка на сайт
 			string tmp_name = "tmp_" + curr_date();
 			ofstream outs(tmp_name);
 
@@ -732,21 +762,21 @@ int main(int ac, char* av[])
 
 			switch (out)
 			{
-				case 1:
+				case 1:											//вывод в файл
 					bpt::write_xml(ofile, pt3, settings);
 					ofile.close();
 					break;
-				case 2:
+				case 2:											//отправка на сайт
 					bpt::write_xml(outs, pt3, settings);
 					outs.close();
 
-					stat(tmp_name.c_str(), &file_info);
-					tmp = fopen(tmp_name.c_str(), "rb");
+					stat(tmp_name.c_str(), &file_info);			
+					tmp = fopen(tmp_name.c_str(), "rb");		//Создание временного файла
 
+//Формирование и выполнение запроса отправки файла на сайт
 					curl = curl_easy_init();
 					errbuf[0] = 0;
 					if (curl) {
-//						curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 						curl_easy_setopt(curl, CURLOPT_READFUNCTION, ReadCallback);
 						curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
 						curl_easy_setopt(curl, CURLOPT_URL, ourl);
@@ -758,7 +788,7 @@ int main(int ac, char* av[])
 						curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
 						res = curl_easy_perform(curl);
 
-						if (res != CURLE_OK) {
+						if (res != CURLE_OK) {				//Обработка ошибки при запросе
 
 							size_t len = strlen(errbuf);
 							flog << to_string(res) << endl;
@@ -778,19 +808,20 @@ int main(int ac, char* av[])
 					}
 
 					fclose(tmp);
-					if (remove(tmp_name.c_str()) != 0)  throw runtime_error("file [" + tmp_name + "] deletion error, aborting");
+					if (remove(tmp_name.c_str()) != 0)  throw runtime_error("file [" + tmp_name + "] deletion error, aborting");	//удаляем временный файл
 					curl_easy_cleanup(curl);
 					break;
 				default:
-					bpt::write_xml(cout, pt3, settings);
+					bpt::write_xml(cout, pt3, settings);		//вывод на экран
 					break;
 			}
 
-			
+//Завершение работы		
 			curl_global_cleanup();
 			flog << curr_time() << ": Done" << endl;
 			return 0;
 		}
+//Блок обработки прерываний
 		catch (runtime_error& e) {
 			flog << curr_time() << ": " << e.what() << endl;
 			return 1;
