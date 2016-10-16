@@ -446,12 +446,15 @@ int main(int ac, char* av[])
 				boost::property_tree::ptree pt2;
 				stringstream ss(readBuffer);
 
-				time(&seconds);
-				sec << seconds;
-				string sc = sec.str();
-				string tmp_json_file = sc + "_" + it->city_name;
-				boost::filesystem::ofstream fjson(tmp_json_file);
-				fjson << ss.rdbuf();
+				time_t scnds;
+				stringstream sn;
+				time(&scnds);
+				sn << scnds;
+				string sc = sn.str();
+				string tmp_json_file = sc + "_" + it->city_name + ".json";
+				ofstream fjson(tmp_json_file);
+ 				stringstream ss2(ss.str());
+				fjson << ss2.rdbuf();
 
 				boost::property_tree::json_parser::read_json(ss, pt2);
 
@@ -657,7 +660,7 @@ int main(int ac, char* av[])
 				time_t current_time = time(NULL);
 				double delphi_time = ((double)current_time / 86400) + 25569;
 
-					sdata2.put("<xmlattr>.name", "#CreateTime");
+				sdata2.put("<xmlattr>.name", "#CreateTime");
 				sdata2.put_value(to_string(delphi_time));
 				sdata1.add_child("sdata", sdata2);
 
@@ -705,6 +708,7 @@ int main(int ac, char* av[])
 				objs.add_child("obj", obj);
 
 				fjson.close();
+				remove(tmp_json_file.c_str());
 
 			}
 			trf.add_child("objs", objs);
